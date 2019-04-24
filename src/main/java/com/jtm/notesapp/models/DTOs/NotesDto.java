@@ -1,5 +1,4 @@
-package com.jtm.notesapp.models;
-
+package com.jtm.notesapp.models.DTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,15 +7,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Notes {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class NotesDto {
     @Column(name="note_title", nullable = false)
     private String NoteTitle;
     @Column(name="note_category")
