@@ -29,8 +29,10 @@ public class NotesController {
     //==============================
 
     @GetMapping("/notes")
-    public List<Notes> getNotes() {return notesService.getNotes();}
-}
+    public List<Notes> getNotes() {
+        return notesService.getNotes();
+    }
+
 
     //==============================
     //
@@ -40,5 +42,9 @@ public class NotesController {
     //
     //==============================
 
-    //@GetMapping("/notesdto")
-    //public List<NotesDto> getNotesDto() { return notesService. }
+    @GetMapping("/dto/notes")
+    public List<NotesDto> getNotesDto() {
+        return notesService.getNotesDto();
+    }
+
+}
