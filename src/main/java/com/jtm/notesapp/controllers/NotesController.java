@@ -3,10 +3,7 @@ package com.jtm.notesapp.controllers;
 import com.jtm.notesapp.models.DTOs.NotesDto;
 import com.jtm.notesapp.models.Notes;
 import com.jtm.notesapp.services.NotesService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,9 +39,17 @@ public class NotesController {
     //
     //==============================
 
+    //@GetMapping("/dto/notes")
+    //public List<NotesDto> getNotesDto() {
+    //    return notesService.getNotesDto();
+    //}
+
     @GetMapping("/dto/notes")
-    public List<NotesDto> getNotesDto() {
-        return notesService.getNotesDto();
+    public List<NotesDto> getNotesDtoByNoteTitle(@RequestParam(value = "notetitle", required = false) String notetitle) {
+        if (notetitle != null) {
+            return notesService.getNotesDtoByTitle(notetitle);
+        }
+        return  notesService.getNotesDto();
     }
 
 }

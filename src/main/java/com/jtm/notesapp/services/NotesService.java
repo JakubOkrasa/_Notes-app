@@ -47,4 +47,12 @@ public class NotesService {
                 .collect(Collectors.toList());
     }
 
+    public List<NotesDto> getNotesDtoByTitle(String noteTitle) {
+        return notesRepository
+                .findNotesByNoteTitleContainingIgnoreCase(noteTitle)
+                .stream()
+                .map(n -> notesMapper.map(n))
+                .collect(Collectors.toList());
+    }
+
 }

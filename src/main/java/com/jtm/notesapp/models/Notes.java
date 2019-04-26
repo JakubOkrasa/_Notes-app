@@ -21,11 +21,11 @@ public class Notes {
     private Long id;
 
     @Column(name="note_title", nullable = false)
-    private String NoteTitle;
+    private String noteTitle;
 
     @Column(name="note_category")
-    private String NoteCategory;
+    private String noteCategory;
 
     @Column(name = "note_content", length=1024)
-    private String NoteContent;
+    private String noteContent;
 }
