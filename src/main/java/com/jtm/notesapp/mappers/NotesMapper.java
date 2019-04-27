@@ -20,9 +20,9 @@ public class NotesMapper implements Mapper<Notes, NotesDto> {
     @Override
     public Notes reverseMap(NotesDto to) {
         return Notes.builder()
-                .NoteTitle(to.getNoteTitle())
-                .NoteCategory(to.getNoteCategory())
-                .NoteContent(to.getNoteContent())
+                .noteTitle(to.getNoteTitle())
+                .noteCategory(to.getNoteCategory())
+                .noteContent(to.getNoteContent())
                 .build();
     }
 }
