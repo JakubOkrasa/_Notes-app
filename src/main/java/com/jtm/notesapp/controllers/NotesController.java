@@ -44,6 +44,24 @@ public class NotesController {
     //    return notesService.getNotesDto();
     //}
 
+
+    @PostMapping("/dto/notes")
+    Notes addNote(@RequestBody NotesDto notesDto) {
+        return notesService.addNote(notesDto);
+    }
+
+    @PutMapping("/dto/notes")
+    void updateNote(@RequestBody NotesDto notesDto) {
+        notesService.updateNoteByNoteTitle(notesDto);
+    }
+
+
+    @DeleteMapping("/dto/notes")
+    void deleteNotesDtoByNoteTitle(@RequestParam(value = "notetitle", required = false) String notetitle) {
+        notesService.deleteNotesByTitle(notetitle);
+
+    }
+
     @GetMapping("/dto/notes")
     public List<NotesDto> getNotesDtoByNoteTitle(@RequestParam(value = "notetitle", required = false) String notetitle) {
         if (notetitle != null) {
@@ -51,5 +69,6 @@ public class NotesController {
         }
         return  notesService.getNotesDto();
     }
+
 
 }
