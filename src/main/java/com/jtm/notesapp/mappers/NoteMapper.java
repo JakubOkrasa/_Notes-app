@@ -1,16 +1,16 @@
 package com.jtm.notesapp.mappers;
 
 import com.jtm.notesapp.commons.Mapper;
-import com.jtm.notesapp.models.DTOs.NotesDto;
-import com.jtm.notesapp.models.Notes;
+import com.jtm.notesapp.models.DTOs.NoteDto;
+import com.jtm.notesapp.models.Note;
 import org.springframework.stereotype.Component;
 
 @Component
-public class NotesMapper implements Mapper<Notes, NotesDto> {
+public class NoteMapper implements Mapper<Note, NoteDto> {
 
     @Override
-    public NotesDto map(Notes from) {
-        return NotesDto.builder()
+    public NoteDto map(Note from) {
+        return NoteDto.builder()
                 .NoteTitle(from.getNoteTitle())
                 .NoteCategory(from.getNoteCategory())
                 .NoteContent(from.getNoteContent())
@@ -18,8 +18,8 @@ public class NotesMapper implements Mapper<Notes, NotesDto> {
     }
 
     @Override
-    public Notes reverseMap(NotesDto to) {
-        return Notes.builder()
+    public Note reverseMap(NoteDto to) {
+        return Note.builder()
                 .noteTitle(to.getNoteTitle())
                 .noteCategory(to.getNoteCategory())
                 .noteContent(to.getNoteContent())

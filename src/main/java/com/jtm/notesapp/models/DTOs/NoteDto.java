@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class NotesDto {
+public class NoteDto {
     private String NoteTitle;
     private String NoteCategory;
     private String NoteContent;
