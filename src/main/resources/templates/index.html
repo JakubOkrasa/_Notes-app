@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Notes App</title>
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
-</head>
-<body style="background-image: url('https://images.pexels.com/photos/544115/pexels-photo-544115.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); background-repeat: no-repeat;
-  background-size: 100%;">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
 
 <header class="superhead">
-    <div class="row h-100 align-items-center">
-        <div class="col-12 text-center">
+    <!--<div class="row h-100 align-items-center">-->
+        <!--<div class="col-12 text-center">-->
             Welcome in <span class="content-header">Notes-app</span>
-        </div>
-    </div>
+        <!--</div>-->
+    <!--</div>-->
 </header>
+<section>
+    <div class="container">
+        <div th:replace="fragments/add :: add"></div>
+    </div>
+</section>
 </body>
 </html>
