@@ -4,16 +4,20 @@
 <body>
 
 <header class="superhead">
-    <!--<div class="row h-100 align-items-center">-->
-        <!--<div class="col-12 text-center">-->
             Welcome in <span class="content-header">Notes-app</span>
-        <!--</div>-->
-    <!--</div>-->
 </header>
-<section>
-    <div class="container">
-        <div th:replace="fragments/add :: add"></div>
+
+<div th:each="n : ${notes}" class="container">
+    <div class="card" style="width:400px">
+        <img class="card-img-top" src="polaroid_2X.png" width="150" height="150" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title" th:text="${n.getNoteTitle()}"></h4>
+            <p class="card-text" th:text="${n.getNoteContent()}"></p>
+            <a href="#" class="btn btn-primary">View</a>
+        </div>
     </div>
-</section>
+</div>
+
+
 </body>
 </html>

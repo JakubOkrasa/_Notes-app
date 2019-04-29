@@ -3,6 +3,7 @@ package com.jtm.notesapp.controllers;
 import com.jtm.notesapp.models.DTOs.NoteDto;
 import com.jtm.notesapp.services.NoteService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +18,14 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String getHomepage() {
+    public String getHomepage(Model model) {
+        model.addAttribute("notes", noteService.getNotesDto());
         return "index";
+    }
+
+    @GetMapping("/add")
+    public String getAddPage() {
+        return "/add";
     }
 
     @PostMapping("/add")
