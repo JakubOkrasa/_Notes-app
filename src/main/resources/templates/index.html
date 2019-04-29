@@ -7,17 +7,35 @@
             Welcome in <span class="content-header">Notes-app</span>
 </header>
 
-<div th:each="n : ${notes}" class="container">
-    <div class="card" style="width:400px">
+<!--<div class="flex-container">-->
+<div id="cards-wrapper" th:each="n : ${notes}" class="card-container">
+    <div class="card" style="width:400px; margin: auto;">
         <img class="card-img-top" src="polaroid_2X.png" width="150" height="150" alt="Card image">
         <div class="card-body">
             <h4 class="card-title" th:text="${n.getNoteTitle()}"></h4>
             <p class="card-text" th:text="${n.getNoteContent()}"></p>
             <a href="#" class="btn btn-primary">View</a>
+            <form action="/delete" method="get">
+                <input type="hidden" value="${n.getNoteTitle()}" name="noteTitle"/>
+                <button href="/delete" class="btn btn-danger" type="submit">Delete</button>
+            </form>
+            <form action="/edit" method="post">
+                <input type="hidden" value="${n.getNoteTitle()}" name="noteTitle"/>
+                <button href="/edit" class="btn btn-info" type="submit">Edit</button>
+            </form>
+
         </div>
     </div>
 </div>
 
+<div class="main-container">
+    <h2>Create a note</h2>
+</div>
+
+<div class="right-container">
+    <h2>Find a note</h2>
+</div>
+<!--</div>-->
 
 </body>
 </html>
