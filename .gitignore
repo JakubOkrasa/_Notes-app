@@ -33,6 +33,7 @@ HELP.md
 mvnw
 mvnw.cmd
 
+
 /src/main/resources/config.properties
 .
 /src/main/java/com/jtm/notesapp/commons/swagger/
