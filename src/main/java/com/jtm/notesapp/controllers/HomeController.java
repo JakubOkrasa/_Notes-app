@@ -36,8 +36,9 @@ public class HomeController {
     }
 
     @GetMapping("/delete")
-    public String deleteNote(@RequestParam String noteTitle) {
+    public String deleteNote(@RequestParam(value = "delnote") String noteTitle) {
         noteService.deleteNotesByTitle(noteTitle);
+        System.out.println("Home: deleted =====================");
         return "redirect:/";
     }
 

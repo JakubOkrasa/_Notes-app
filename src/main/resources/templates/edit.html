@@ -7,9 +7,9 @@
         <!--<a href="#" class="list-group-item list-group-item-action list-group-item-success">Note added.</a>-->
     <!--</div>-->
     <form th:action="@{/edit}" th:object="${editedNote}" method="post" action="/edit">
-        <input type="text" name="noteCategory" placeholder="Note Category"/>
-        <textarea type="text" rows="20" cols="90" name="noteContent" placeholder="Your note"></textarea>
-        <button class="btn btn-sm btn-success" type="submit">Edit</button>
+        <p><input type="text" name="noteCategory" value="old categ."/></p>
+        <p><textarea type="text" rows="20" cols="90" name="noteContent" placeholder="Your note"></textarea></p>
+        <p><button class="btn btn-sm btn-success" type="submit">Edit</button></p>
     </form>
     <a href="/">Home page</a>
 </div>

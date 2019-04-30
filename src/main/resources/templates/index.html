@@ -17,13 +17,13 @@
                 <p class="card-text" th:text="${n.getNoteContent()}"></p>
                 <div style="display: flex; flex-direction: row;">
                 <a href="#" class="btn btn-primary">View</a>
-                    <form action="/delete" method="get">
-                        <input type="hidden" value="${n.getNoteTitle()}" name="noteTitle"/>
-                        <button href="/delete" class="btn btn-danger" type="submit">Delete</button>
-                    </form>
                     <form action="/edit" method="post">
-                        <input type="hidden" value="${n.getNoteTitle()}" name="noteTitle"/>
-                        <button href="/edit" class="btn btn-info" type="submit">Edit</button>
+                        <input type="hidden" th:value="${n.getNoteTitle()}" name="noteTitle" />
+                        <button class="btn btn-info" type="submit">Edit</button>
+                    </form>
+                    <form action="/delete" method="get">
+                        <input type="hidden" th:value="${n.getNoteTitle()}" name="delnote">
+                        <button class="btn btn-danger" type="submit">Delete</button>
                     </form>
                 </div>
             </div>
@@ -37,6 +37,8 @@
     <div class="right-container">
         <h2>Find a note</h2>
 </div>
+
+    
 </div>
 </body>
 </html>
