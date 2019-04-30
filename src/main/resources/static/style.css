@@ -21,26 +21,4 @@ body {
     opacity: 60%;
     margin-bottom: 15px;
     margin-left: 150px;
-    float: none;
-    z-index: 1;
 }
-
-.main-container {
-display: block;
-    float: left;
-}
-
-.right-container {
-display: block;
-    float: left;
-}
-
-#cards-wrapper {
-    display: block;
-    float: left;
-}
-
-/*.flex-container {
-  display: flex;
-  flex-direction: row;
-} */

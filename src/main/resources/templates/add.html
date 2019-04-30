@@ -7,11 +7,13 @@
                 <a href="#" class="list-group-item list-group-item-action list-group-item-success">Note added.</a>
             </div>
             <form th:action="@{/add}" th:object="${note}" method="post" action="/add">
-                <input type="text" name="noteTitle" placeholder="Note Title"/>
-                <input type="text" name="noteCategory" placeholder="Note Category"/>
-                <textarea type="text" rows="20" cols="90" name="noteContent" placeholder="Your note"></textarea>
+                <p><input type="text" name="noteTitle" placeholder="Note Title"/></p>
+                <p><input type="text" name="noteCategory" placeholder="Note Category"/></p>
+                <p><textarea type="text" rows="20" cols="90" name="noteContent" placeholder="Your note"></textarea></p>
                 <button class="btn btn-sm btn-success" type="submit">Create</button>
             </form>
+
+            <a href="/">Home page</a>
 
         </div>
     </body>
