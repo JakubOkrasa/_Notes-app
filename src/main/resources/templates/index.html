@@ -2,43 +2,54 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: head"></head>
 <body>
-
+<div id="main-container">
 <header class="superhead">
             Welcome in <span class="content-header">Notes-app</span>
 </header>
 
 <a href="/add">Add a note</a>
 <div style="display: flex; flex-direction: row;">
-    <div id="cards-wrapper" th:each="n : ${notes}" class="card-container">
-        <div class="card" style="width:400px; margin: auto;">
-            <img class="card-img-top" src="polaroid_2X.png" width="150" height="150" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title" th:text="${n.getNoteTitle()}"></h4>
-                <p class="card-text" th:text="${n.getNoteContent()}"></p>
-                <div style="display: flex; flex-direction: row;">
-                <a href="#" class="btn btn-primary">View</a>
-                    <form action="/edit" method="post">
-                        <input type="hidden" th:value="${n.getNoteTitle()}" name="noteTitle" />
-                        <button class="btn btn-info" type="submit">Edit</button>
-                    </form>
-                    <form action="/delete" method="get">
-                        <input type="hidden" th:value="${n.getNoteTitle()}" name="delnote">
-                        <button class="btn btn-danger" type="submit">Delete</button>
-                    </form>
+    <div id="cards-wrapper">
+        <div th:each="n : ${notes}" class="card-container">
+            <div class="card" style="width:400px; margin: auto;">
+                <img class="card-img-top" src="polaroid_2X.png" width="150" height="150" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${n.getNoteTitle()}"></h4>
+                    <p class="card-text" th:text="${n.getNoteContent()}"></p>
+                    <div style="display: flex; flex-direction: row;">
+                    <button class="btn btn-primary" onclick="openForm()">View</button>
+                        <form action="/edit" method="post">
+                            <input type="hidden" th:value="${n.getNoteTitle()}" name="noteTitle" />
+                            <button class="btn btn-info" type="submit">Edit</button>
+                        </form>
+                        <form action="/delete" method="get">
+                            <input type="hidden" th:value="${n.getNoteTitle()}" name="delnote">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </div>
                 </div>
+
             </div>
+            <!--<div class="form-popup" id="myForm">-->
+                <!--<div class="form-container">-->
+                    <!--<h2 th:text="${n.getNoteTitle()}"></h2>-->
+                    <!--<p th:text="${n.getNoteContent()}"></p>-->
+                    <!--<button type="button" class="btn cancel" onclick="closeForm()">Close</button>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
-    <div style="background-color: orange;">
-        <h2>Create a note</h2>
-    </div>
+    <div th:replace="fragments/add :: add"></div>
 
 
-    <div  style="background-color: yellow;">
+    <div  style="margin: 30px;">
         <h2>Find a note</h2>
     </div>
 
 
+
+
+</div>
 </div>
 </body>
 </html>

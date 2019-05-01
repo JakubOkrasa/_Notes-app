@@ -6,8 +6,9 @@
     <!--<div>-->
         <!--<a href="#" class="list-group-item list-group-item-action list-group-item-success">Note added.</a>-->
     <!--</div>-->
-    <form th:action="@{/edit}" th:object="${editedNote}" method="post" action="/edit">
-        <p><input type="text" name="noteCategory" value="${}"/></p>
+    <form th:action="@{/edit}" th:object="${note}" method="post" action="/edit">
+        <p><input th:text="${note.getNoteTitle()}"/></p>
+        <p><input type="text" name="noteCategory" value="${note.getNoteContent()}"/></p>
         <p><textarea type="text" rows="20" cols="90" name="noteContent" placeholder="Your note"></textarea></p>
         <p><button class="btn btn-sm btn-success" type="submit">Edit</button></p>
     </form>

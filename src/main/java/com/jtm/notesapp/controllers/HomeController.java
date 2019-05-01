@@ -43,7 +43,8 @@ public class HomeController {
     }
 
     @GetMapping("/edit")
-    public String getEditPage() {
+    public String getEditPage(Model model, @RequestParam(value="noteToEdit") String noteToEdit) {
+        model.addAttribute("note", noteService.getNotesDtoByTitle(noteToEdit).get(0)); //to nie dziala, requestParam nie jest użyte
         return "redirect:/";
     }
 
@@ -52,4 +53,6 @@ public class HomeController {
         noteService.updateNoteByNoteTitle(editedNote);
         return "edit";
     }
+
+
 }

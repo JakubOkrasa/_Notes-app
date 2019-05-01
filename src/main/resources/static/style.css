@@ -3,6 +3,14 @@ body {
     background-repeat: no-repeat;
     background-image: url('https://images.pexels.com/photos/544115/pexels-photo-544115.jpeg');
 }
+
+#main-container {
+    opacity: 0.8;
+}
+
+#add-form-container {
+    margin: 30px;
+}
 .superhead {
     font-size: 20px;
     text-align: center
@@ -18,8 +26,12 @@ body {
 .card-container {
     width: 250px;
     background-color: cornflowerblue;
-    opacity: 60%;
     margin-bottom: 15px;
     margin-left: 150px;
-    opacity: 0.3;
+
+}
+
+input {
+    display: block;
+    box-sizing: border-box;
 }
