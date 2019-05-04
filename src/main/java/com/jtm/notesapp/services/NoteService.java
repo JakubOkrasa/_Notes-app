@@ -22,22 +22,18 @@ public class NoteService {
     }
 
     //==============================
-    //
-    //
     //          DAO
-    //
-    //
     //==============================
     public List<Note> getNotes() {
         return noteRepository.findAll();
     }
 
+    public Note getNoteById(Long id) { return noteRepository.findNotesById(id); }
+
+    public void deleteNotesById(Long id) { noteRepository.deleteById(id); }
+
     //==============================
-    //
-    //
     //          DTO
-    //
-    //
     //==============================
 
     public List<NoteDto> getNotesDto() {
@@ -74,7 +70,10 @@ public class NoteService {
                 .collect(Collectors.toList());
     }
 
-    public void deleteNotesByTitle(String noteTitle) {
-        noteRepository.deleteByNoteTitleIgnoreCase(noteTitle);
-    }
+    public void deleteNotesByNoteTitle(String noteTitle) { noteRepository.deleteByNoteTitle(noteTitle); }
+
+
+
+
+
 }

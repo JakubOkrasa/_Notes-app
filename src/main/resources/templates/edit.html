@@ -2,17 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: head"></head>
 <body>
-<div class="container" xmlns:th="http://thymeleaf.org">
-    <!--<div>-->
-        <!--<a href="#" class="list-group-item list-group-item-action list-group-item-success">Note added.</a>-->
-    <!--</div>-->
-    <form th:action="@{/edit}" th:object="${note}" method="post" action="/edit">
-        <p><input th:text="${note.getNoteTitle()}"/></p>
-        <p><input type="text" name="noteCategory" value="${note.getNoteContent()}"/></p>
-        <p><textarea type="text" rows="20" cols="90" name="noteContent" placeholder="Your note"></textarea></p>
-        <p><button class="btn btn-sm btn-success" type="submit">Edit</button></p>
-    </form>
-    <a href="/">Home page</a>
-</div>
-</body>
+        <div class="container">
+
+            <form action="#" th:action="@{/update/{id}(id=${noteToEdit.id})}" th:object="${noteToEdit}" method="post">
+                <label>Title</label>
+                <input type="text" th:field="*{noteTitle}"/>
+                <label>Category</label>
+                <input type="text" th:field="*{noteCategory}"/>
+                <label>Content</label>
+                <textarea type="text" th:field="*{noteContent}"></textarea>
+                <input type="submit" value="Edit" class="btn btn-info"/>
+            </form>
+            <a href="/">Home page</a>
+        </div>
+    </body>
 </html>

@@ -1,26 +1,27 @@
 package com.jtm.notesapp.controllers;
 
 import com.jtm.notesapp.models.DTOs.NoteDto;
+import com.jtm.notesapp.models.Note;
+import com.jtm.notesapp.repositories.NoteRepository;
 import com.jtm.notesapp.services.NoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeController {
 
     private NoteService noteService;
+    private NoteRepository noteRepository;
 
-    public HomeController(NoteService noteService) {
+    public HomeController(NoteService noteService, NoteRepository noteRepository) {
         this.noteService = noteService;
+        this.noteRepository = noteRepository;
     }
 
     @GetMapping("/")
     public String getHomepage(Model model) {
-        model.addAttribute("notes", noteService.getNotesDto());
+        model.addAttribute("notes", noteService.getNotes());
         return "index";
     }
 
@@ -35,23 +36,29 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/view")
+    public String viewNote(@RequestParam(value = "viewNoteId") Long id, Model model) {
+        model.addAttribute("noteToView", noteService.getNoteById(id));
+        return "view";
+    }
+
     @GetMapping("/delete")
-    public String deleteNote(@RequestParam(value = "delnote") String noteTitle) {
-        noteService.deleteNotesByTitle(noteTitle);
-        System.out.println("Home: deleted =====================");
+    public String deleteNote(@RequestParam(value = "delNoteId") Long id) {
+        noteService.deleteNotesById(id);
         return "redirect:/";
     }
 
-    @GetMapping("/edit")
-    public String getEditPage(Model model, @RequestParam(value="noteToEdit") String noteToEdit) {
-        model.addAttribute("note", noteService.getNotesDtoByTitle(noteToEdit).get(0)); //to nie dziala, requestParam nie jest użyte
-        return "redirect:/";
-    }
-
-    @PostMapping("/edit")
-    public  String editNote(@ModelAttribute NoteDto editedNote) {
-        noteService.updateNoteByNoteTitle(editedNote);
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable long id, Model model) {
+        Note note = noteService.getNoteById(id);
+        model.addAttribute("noteToEdit", note);
         return "edit";
+    }
+
+    @PostMapping("/update/{id}")
+    public  String updateNote(@PathVariable long id, Note note) {
+        noteRepository.save(note);
+        return "redirect:/";
     }
 
 

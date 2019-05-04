@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+
+    <form th:action="@{/view}" th:object="${noteToView}" method="get">
+        <h3 th:text="*{getNoteTitle()}"></h3>
+        <p th:text="*{getNoteContent()}"></p>
+    </form>
+</body>
+</html>
