@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+    <body>
+        <div class="container" id="add-form-container" xmlns:th="http://thymeleaf.org" th:fragment="add">
+            <!--<div class="list-group">-->
+                <!--<a href="#" class="list-group-item list-group-item-action list-group-item-success">Note added.</a>-->
+            <!--</div>-->
+            <form th:action="@{/add}" th:object="${note}" method="post" action="/add">
+                <input type="text" name="noteTitle" placeholder="Note Title"/>
+                <input type="text" name="noteCategory" placeholder="Note Category"/>
+                <textarea type="text" rows="15" cols="40" name="noteContent" placeholder="Your note"></textarea>
+                <button class="btn btn-sm btn-success" type="submit">Create</button>
+            </form>
+
+            <a href="/">Home page</a>
+
+        </div>
+    </body>
+</html>

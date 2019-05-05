@@ -58,7 +58,7 @@ public class NoteController {
 
     @DeleteMapping("/dto/notes/{noteTitle}")
     void deleteNotesDtoByNoteTitle(@PathVariable String noteTitle) {
-        noteService.deleteNotesByTitle(noteTitle);
+        noteService.deleteNotesByNoteTitle(noteTitle);
 
     }
 

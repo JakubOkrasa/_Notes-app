@@ -16,8 +16,12 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
 
     @Transactional
     @Modifying
-    void deleteByNoteTitleIgnoreCase(String noteTitle);
+    void deleteById(Long id);
 
+    @Transactional
+    @Modifying
+    void deleteByNoteTitle(String noteTitle);
 
+    Note findNotesById(Long noteID);
 
 }

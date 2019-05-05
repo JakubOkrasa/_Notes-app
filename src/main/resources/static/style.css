@@ -1,0 +1,37 @@
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('https://images.pexels.com/photos/544115/pexels-photo-544115.jpeg');
+}
+
+#main-container {
+    opacity: 0.8;
+}
+
+#add-form-container {
+    margin: 30px;
+}
+.superhead {
+    font-size: 20px;
+    text-align: center
+
+}
+
+.content-header {
+    text-decoration: underline;
+    font-size: 30px;
+    font-family: 'Artifika', serif;
+}
+
+.card-container {
+    width: 250px;
+    background-color: cornflowerblue;
+    margin-bottom: 15px;
+    margin-left: 150px;
+
+}
+
+input {
+    display: block;
+    box-sizing: border-box;
+}
