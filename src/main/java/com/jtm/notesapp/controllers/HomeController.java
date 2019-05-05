@@ -6,7 +6,10 @@ import com.jtm.notesapp.repositories.NoteRepository;
 import com.jtm.notesapp.services.NoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class HomeController {
@@ -56,7 +59,11 @@ public class HomeController {
     }
 
     @PostMapping("/update/{id}")
-    public  String updateNote(@PathVariable long id, Note note) {
+    public  String updateNote(@PathVariable long id, @Valid Note note, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            note.setId(id);
+            return "edit";
+        }
         noteRepository.save(note);
         return "redirect:/";
     }
