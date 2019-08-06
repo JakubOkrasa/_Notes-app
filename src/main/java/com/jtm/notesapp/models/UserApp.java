@@ -11,13 +11,13 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "user")
+@Table(name = "user_app")
 public class UserApp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private Integer id;
+    private Integer userId;
 
     private String login;
     private String password;
@@ -30,4 +30,10 @@ public class UserApp {
     private Set<Role> roles;
 
 
+    public UserApp(UserApp userApp) {
+        this.login = userApp.getLogin();
+        this.password = userApp.getPassword();
+        this.active = userApp.getActive();
+        this.roles = userApp.getRoles();
+    }
 }
