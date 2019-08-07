@@ -9,13 +9,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "notes")
+@Table(name = "note")
 public class Note {
 
     @Id
@@ -36,4 +37,7 @@ public class Note {
     @NotBlank(message="Note content is required.")
     @Size(max = 1024)
     private String noteContent;
+
+    @OneToMany(mappedBy = "notes")
+    private Set<UserApp> users;
 }

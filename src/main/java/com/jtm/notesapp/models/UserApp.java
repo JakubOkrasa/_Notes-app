@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -29,11 +30,18 @@ public class UserApp {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @OneToMany
+    @JoinTable(name = "user_note",
+        joinColumns = @JoinColumn(name="user_id"),
+        inverseJoinColumns = @JoinColumn(name = "note_id"))
+    private Set<Note> notes = new HashSet<>();
+
 
     public UserApp(UserApp userApp) {
         this.login = userApp.getLogin();
         this.password = userApp.getPassword();
         this.active = userApp.getActive();
         this.roles = userApp.getRoles();
+        this.notes = userApp.getNotes();
     }
 }

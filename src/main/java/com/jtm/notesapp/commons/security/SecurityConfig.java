@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin() //wł. form. logowania
                 .loginPage("/login") //ustawienie strony logowania
-                .loginProcessingUrl("/signin") //włącza obsługę formularza, dotyczy atrybutu w <form>
+                .loginProcessingUrl("/signin") //włącza wbudowaną w Spring obsługę przycisku "zaloguj", dotyczy atrybutu w <form>
                 .usernameParameter("username") //pod jakim atrybutem jest username np. w thymeleaf
                 .passwordParameter("password")
 
@@ -68,17 +68,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                     else {
                         errorMessage="unknown error: "+exp.getMessage();
+
                     }
+                    System.out.println("errormessage: " + errorMessage);
                     req.getSession().setAttribute("message", errorMessage);
                     res.sendRedirect("/"); //added by me
                 })
                 .permitAll()
                 .and()
                 .logout()
-                .logoutUrl("/logout")  //to nie jest strona www tylko mapowanie endpointu
+                .logoutUrl("/logout")  //maps endpoint in Thymeleaf to logging out built-in Spring
                 //nastąpi usunięcie cookies i wylogowanie, ale nie przejście na stronę
                 .logoutSuccessHandler((req, res, auth) -> {
-//                    req.getSession().setAttribute("message", "You are logged out");
+                    req.getSession().setAttribute("message", "You are logged out");
                     res.sendRedirect("/login");
                 })
                 .permitAll()
