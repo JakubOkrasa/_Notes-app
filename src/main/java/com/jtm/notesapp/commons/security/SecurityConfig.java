@@ -28,38 +28,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().disable(); //0:15:00 (3)
 
-//        http.authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll();
-
         http
                 .authorizeRequests()
-                .antMatchers("/login**") // tu mogą być params jak success, error itp, dlatego **
+                .antMatchers("/login**")
                 .permitAll() //dostępny dla wszystkich
                 .and()
-                .formLogin() //wł. form. logowania
-                .loginPage("/login") //ustawienie strony logowania
-                .loginProcessingUrl("/signin") //włącza wbudowaną w Spring obsługę przycisku "zaloguj", dotyczy atrybutu w <form>
-                .usernameParameter("username") //pod jakim atrybutem jest username np. w thymeleaf
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/signin")
+                .usernameParameter("username")
                 .passwordParameter("password")
 
 //                .defaultSuccessUrl() //(3) 0:23:00
                 .successHandler((req, res, auth) -> {
                     System.out.println("==================SUCCESS HANDLER ====================");
-                    for (GrantedAuthority authority : auth.getAuthorities()) { //servlet dostarcza:
-                        //req - request; res - response z servletu; auth
-                        // auth.getAuthorities()
-                        // - lista możliwych typów userów
+                    for (GrantedAuthority authority : auth.getAuthorities()) {
                         System.out.println(authority.getAuthority());
                     }
                     System.out.println(auth.getName());
-                    res.sendRedirect("/"); //res."co ma się stać jeśli success" tu: przejście na srone główną
+                    res.sendRedirect("/");
                 })
 
-//                .failureUrl() //poniższa linia jest nadrzędna (3) 0:29:00
                 .failureHandler((req, res, exp) -> {//exp - exception
                     System.out.println("==================FAILURE HANDLER ====================");
                     String errorMessage;
@@ -72,13 +61,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                     System.out.println("errormessage: " + errorMessage);
                     req.getSession().setAttribute("message", errorMessage);
-                    res.sendRedirect("/"); //added by me
+                    res.sendRedirect("/");
                 })
                 .permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")  //maps endpoint in Thymeleaf to logging out built-in Spring
-                //nastąpi usunięcie cookies i wylogowanie, ale nie przejście na stronę
                 .logoutSuccessHandler((req, res, auth) -> {
                     req.getSession().setAttribute("message", "You are logged out");
                     res.sendRedirect("/login");
@@ -94,7 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService((customUserService))
-                .passwordEncoder(passwordEncoder); //odhashowanie hasła
+                .passwordEncoder(passwordEncoder);
     }
 
 

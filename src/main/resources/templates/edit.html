@@ -4,7 +4,8 @@
 <body>
         <div class="container">
 
-            <form action="#" th:action="@{/update/{id}(id=${noteToEdit.id})}" th:object="${noteToEdit}" method="post">
+<!--            <form action="#" th:action="@{/update/{id}(id=${noteToEdit.id})}" th:object="${noteToEdit}" method="post">-->
+            <form action="#" th:action="@{/update}" th:object="${noteToEdit}" method="post">
                 <label>Title</label>
                 <input type="text" th:field="*{noteTitle}"/>
                 <label>Category</label>

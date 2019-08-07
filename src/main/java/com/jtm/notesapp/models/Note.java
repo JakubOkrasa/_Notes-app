@@ -1,10 +1,7 @@
 package com.jtm.notesapp.models;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +9,8 @@ import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -38,6 +36,11 @@ public class Note {
     @Size(max = 1024)
     private String noteContent;
 
-    @OneToMany(mappedBy = "notes")
-    private Set<UserApp> users;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserApp userApp;
+
+    public void setUserApp(UserApp userApp) {
+        this.userApp = userApp;
+    }
 }

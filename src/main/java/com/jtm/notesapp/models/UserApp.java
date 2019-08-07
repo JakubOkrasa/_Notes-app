@@ -30,10 +30,8 @@ public class UserApp {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @OneToMany
-    @JoinTable(name = "user_note",
-        joinColumns = @JoinColumn(name="user_id"),
-        inverseJoinColumns = @JoinColumn(name = "note_id"))
+
+    @OneToMany(mappedBy = "userApp", fetch=FetchType.EAGER)
     private Set<Note> notes = new HashSet<>();
 
 
