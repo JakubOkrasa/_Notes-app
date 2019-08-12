@@ -69,25 +69,27 @@ public class HomeController {
         return "edit";
     }
 
-//    @PostMapping("/update/{id}")
-//    public  String updateNote(@PathVariable long id, @Valid Note note, BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            note.setId(id);
-//            note.setUserApp();
-//            return "edit";
-//        }
-//        noteRepository.save(note);
-//        return "redirect:/";
-//    }
-    @PostMapping("/update")
-    public  String updateNote(@ModelAttribute Note note, Model model) {
-        model.addAttribute("noteToEdit", note);
+    @PostMapping("/update/{id}")
+    public  String updateNote(@PathVariable long id, @Valid Note note, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            note.setId(id);
+            return "edit";
+        }
         SecurityContext securityContext = SecurityContextHolder.getContext();
         note.setUserApp(userAppRepository
-                .findUserAppByLogin(securityContext.getAuthentication().getName()).orElseThrow(() -> new UsernameNotFoundException("Current user not found")));
-//        note.equals() noteService.getNoteById(id)
+                .findUserAppByLogin(securityContext.getAuthentication().getName()).orElseThrow(() -> new UsernameNotFoundException("Error saving UserApp in updating note.")));
+        noteRepository.save(note);
         return "redirect:/";
     }
+//    @PostMapping("/update")
+//    public  String updateNote(@ModelAttribute Note note, Model model) {
+//        model.addAttribute("noteToEdit", note);
+//        SecurityContext securityContext = SecurityContextHolder.getContext();
+//        note.setUserApp(userAppRepository
+//                .findUserAppByLogin(securityContext.getAuthentication().getName()).orElseThrow(() -> new UsernameNotFoundException("Current user not found")));
+////        note.equals() noteService.getNoteById(id)
+//        return "redirect:/";
+//    }
 
     @GetMapping("/login")
     public String loginPage() {
