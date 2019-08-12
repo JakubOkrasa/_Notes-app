@@ -3,6 +3,7 @@ package com.jtm.notesapp.controllers;
 import com.jtm.notesapp.commons.security.UserAppRepository;
 import com.jtm.notesapp.models.DTOs.NoteDto;
 import com.jtm.notesapp.models.Note;
+import com.jtm.notesapp.models.UserApp;
 import com.jtm.notesapp.repositories.NoteRepository;
 import com.jtm.notesapp.services.NoteService;
 import org.springframework.security.core.context.SecurityContext;
@@ -14,6 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
+import java.util.HashSet;
 
 @Controller
 public class HomeController {
@@ -70,7 +73,7 @@ public class HomeController {
     }
 
     @PostMapping("/update/{id}")
-    public  String updateNote(@PathVariable long id, @Valid Note note, BindingResult result, Model model) {
+    public String updateNote(@PathVariable long id, @Valid Note note, BindingResult result, Model model) {
         if (result.hasErrors()) {
             note.setId(id);
             return "edit";
@@ -85,6 +88,18 @@ public class HomeController {
     @GetMapping("/login")
     public String loginPage() {
         return "login";
+    }
+
+    @GetMapping("/register")
+    public String registerPage() {return "register"; }
+
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute UserApp user, @ModelAttribute String passwordToHash) {
+        user.setActive(1);
+
+//        user.setRoles(new HashSet(Collections.singleton("USER"))); //TODO: singleton() returns immutable set, change this
+        userAppRepository.save(user);
+        return "redirect:/";
     }
 
 
