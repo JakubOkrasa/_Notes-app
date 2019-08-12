@@ -81,15 +81,6 @@ public class HomeController {
         noteRepository.save(note);
         return "redirect:/";
     }
-//    @PostMapping("/update")
-//    public  String updateNote(@ModelAttribute Note note, Model model) {
-//        model.addAttribute("noteToEdit", note);
-//        SecurityContext securityContext = SecurityContextHolder.getContext();
-//        note.setUserApp(userAppRepository
-//                .findUserAppByLogin(securityContext.getAuthentication().getName()).orElseThrow(() -> new UsernameNotFoundException("Current user not found")));
-////        note.equals() noteService.getNoteById(id)
-//        return "redirect:/";
-//    }
 
     @GetMapping("/login")
     public String loginPage() {
