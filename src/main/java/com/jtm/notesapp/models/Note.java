@@ -1,21 +1,20 @@
 package com.jtm.notesapp.models;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "notes")
+@Table(name = "note")
 public class Note {
 
     @Id
@@ -36,4 +35,12 @@ public class Note {
     @NotBlank(message="Note content is required.")
     @Size(max = 1024)
     private String noteContent;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserApp userApp;
+
+    public void setUserApp(UserApp userApp) {
+        this.userApp = userApp;
+    }
 }

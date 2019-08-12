@@ -1,15 +1,21 @@
 package com.jtm.notesapp.repositories;
 
 import com.jtm.notesapp.models.Note;
+import com.jtm.notesapp.models.UserApp;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
     Optional<Note> findNotesByNoteTitleContainingIgnoreCase(String noteTitle);
+
+    Optional<Note> findNotesByNoteTitle(String noteTitle);
+
+
 
     //my version
     //List<Note> findNotesByNoteTitleContainingIgnoreCase(String noteTitle);
@@ -23,5 +29,7 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     void deleteByNoteTitle(String noteTitle);
 
     Note findNotesById(Long noteID);
+
+    List<Note> findNotesByUserApp(UserApp userApp);
 
 }

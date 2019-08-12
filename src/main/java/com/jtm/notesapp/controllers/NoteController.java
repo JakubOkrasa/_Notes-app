@@ -27,7 +27,7 @@ public class NoteController {
 
     @GetMapping("/notes")
     public List<Note> getNotes() {
-        return noteService.getNotes();
+        return noteService.getNotesByUserApp();
     }
 
 
@@ -47,6 +47,7 @@ public class NoteController {
 
     @PostMapping("/dto/notes")
     Note addNote(@RequestBody NoteDto noteDto) {
+
         return noteService.addNote(noteDto);
     }
 
@@ -59,7 +60,6 @@ public class NoteController {
     @DeleteMapping("/dto/notes/{noteTitle}")
     void deleteNotesDtoByNoteTitle(@PathVariable String noteTitle) {
         noteService.deleteNotesByNoteTitle(noteTitle);
-
     }
 
     @GetMapping("/dto/notes")

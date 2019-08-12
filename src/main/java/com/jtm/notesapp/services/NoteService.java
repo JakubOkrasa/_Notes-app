@@ -1,9 +1,13 @@
 package com.jtm.notesapp.services;
 
+import com.jtm.notesapp.commons.security.UserAppRepository;
 import com.jtm.notesapp.mappers.NoteMapper;
 import com.jtm.notesapp.models.DTOs.NoteDto;
 import com.jtm.notesapp.models.Note;
 import com.jtm.notesapp.repositories.NoteRepository;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,17 +19,24 @@ public class NoteService {
 
     private NoteRepository noteRepository;
     private NoteMapper noteMapper;
+    private UserAppRepository userAppRepository;
 
-    public NoteService(NoteRepository noteRepository, NoteMapper noteMapper) {
+    public NoteService(NoteRepository noteRepository, NoteMapper noteMapper, UserAppRepository userAppRepository) {
         this.noteRepository = noteRepository;
         this.noteMapper = noteMapper;
+        this.userAppRepository = userAppRepository;
     }
 
     //==============================
     //          DAO
     //==============================
-    public List<Note> getNotes() {
-        return noteRepository.findAll();
+    public List<Note> getNotesByUserApp() {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        return noteRepository.findNotesByUserApp(userAppRepository
+                .findUserAppByLogin(securityContext
+                        .getAuthentication()
+                        .getName())
+                .orElseThrow(() -> new UsernameNotFoundException("Current User not found")));
     }
 
     public Note getNoteById(Long id) { return noteRepository.findNotesById(id); }
@@ -45,23 +56,24 @@ public class NoteService {
     }
 
     public Note addNote(NoteDto noteDto) {
+
         return noteRepository.save(noteMapper.reverseMap(noteDto));
     }
 
     public void updateNoteByNoteTitle(NoteDto noteDto) {
-        noteRepository.findNotesByNoteTitleContainingIgnoreCase(noteDto.getNoteTitle())
+        noteRepository.findNotesByNoteTitle(noteDto.getNoteTitle())
                 .ifPresent(n -> {
                     n.setNoteCategory(noteDto.getNoteCategory());
                     n.setNoteContent(noteDto.getNoteContent());
                     n.setNoteTitle(noteDto.getNoteTitle());
-
                     noteRepository.save(n);
                 });
     }
 
+
+
     public List<NoteDto> getNotesDtoByTitle(String noteTitle) {
         List<Note> notesList = new ArrayList<>();
-//        List<NoteDto> notesDtoList = new ArrayList<>();
         noteRepository
                 .findNotesByNoteTitleContainingIgnoreCase(noteTitle)
                 .ifPresent(n -> notesList.add(n));
