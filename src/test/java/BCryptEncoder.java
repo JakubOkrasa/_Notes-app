@@ -10,6 +10,6 @@ public class BCryptEncoder {
 
     @Test
     public void getHash() {
-        System.out.println(getBCryptHash("1234"));
+        System.out.println(getBCryptHash("uuuu"));
     }
 }

@@ -51,24 +51,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .failureHandler((req, res, exp) -> {//exp - exception
                     System.out.println("==================FAILURE HANDLER ====================");
-                    String errorMessage;
-                    if(exp.getClass().isAssignableFrom(BadCredentialsException.class)) {
-                        errorMessage = "Invalid username or password";
-                    }
-                    else {
-                        errorMessage="unknown error: "+exp.getMessage();
-
-                    }
-                    System.out.println("errormessage: " + errorMessage);
-                    req.getSession().setAttribute("message", errorMessage);
-                    res.sendRedirect("/");
+                    res.sendRedirect("/login");
                 })
                 .permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")  //maps endpoint in Thymeleaf to logging out built-in Spring
                 .logoutSuccessHandler((req, res, auth) -> {
-                    req.getSession().setAttribute("message", "You are logged out");
                     res.sendRedirect("/login");
                 })
                 .permitAll()

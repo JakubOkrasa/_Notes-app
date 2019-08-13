@@ -2,6 +2,7 @@ package com.jtm.notesapp.controllers;
 
 import com.jtm.notesapp.commons.security.UserAppRepository;
 import com.jtm.notesapp.models.DTOs.NoteDto;
+import com.jtm.notesapp.models.DTOs.UserAppDto;
 import com.jtm.notesapp.models.Note;
 import com.jtm.notesapp.models.UserApp;
 import com.jtm.notesapp.repositories.NoteRepository;
@@ -90,17 +91,14 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/register")
-    public String registerPage() {return "register"; }
+//    @GetMapping("/edite/{id}")
+//    public String editePage(@RequestParam(value = "editeNoteId") long id, Model model) {
+//        model.addAttribute("noteToEdit", noteService.getNoteById(id));
+//
+//        return "edite";
+//    }
 
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute UserApp user, @ModelAttribute String passwordToHash) {
-        user.setActive(1);
 
-//        user.setRoles(new HashSet(Collections.singleton("USER"))); //TODO: singleton() returns immutable set, change this
-        userAppRepository.save(user);
-        return "redirect:/";
-    }
 
 
 }
