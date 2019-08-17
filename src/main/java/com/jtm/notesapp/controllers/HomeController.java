@@ -7,6 +7,7 @@ import com.jtm.notesapp.models.Note;
 import com.jtm.notesapp.models.UserApp;
 import com.jtm.notesapp.repositories.NoteRepository;
 import com.jtm.notesapp.services.NoteService;
+import com.jtm.notesapp.services.UserAppService;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 @Controller
 public class HomeController {

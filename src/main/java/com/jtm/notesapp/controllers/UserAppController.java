@@ -31,18 +31,4 @@ public class UserAppController {
     List<UserApp> getUsers() {
         return userAppService.getUsers();
     }
-
-    @GetMapping("/register")
-    public String registerPage(Model model) {
-        UserAppDto userAppDto = new UserAppDto();
-        model.addAttribute("user", userAppDto);
-        return "register"; }
-
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") UserAppDto userAppDto) {
-        userAppService.addUser(userAppDto);
-
-//        user.setRoles(new HashSet(Collections.singleton("USER"))); //TODO: singleton() returns immutable set, change this
-        return "redirect:/";
-    }
 }

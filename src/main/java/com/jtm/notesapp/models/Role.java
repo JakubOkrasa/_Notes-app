@@ -1,5 +1,6 @@
 package com.jtm.notesapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Role {
 
     private String role;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "roles")
     private Set<UserApp> users = new HashSet<>();
 
