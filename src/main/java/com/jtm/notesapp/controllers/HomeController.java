@@ -48,7 +48,7 @@ public class HomeController {
     }
 
     @PostMapping("/add")
-    public String addNote(@ModelAttribute NoteDto note) {
+    public String addNote(@ModelAttribute("note") @Valid NoteDto note) {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         note.setUserApp(userAppRepository
                 .findUserAppByLogin(securityContext.getAuthentication().getName()).orElseThrow(() -> new UsernameNotFoundException("Current user not found")));
@@ -92,15 +92,5 @@ public class HomeController {
     public String loginPage() {
         return "login";
     }
-
-//    @GetMapping("/edite/{id}")
-//    public String editePage(@RequestParam(value = "editeNoteId") long id, Model model) {
-//        model.addAttribute("noteToEdit", noteService.getNoteById(id));
-//
-//        return "edite";
-//    }
-
-
-
 
 }

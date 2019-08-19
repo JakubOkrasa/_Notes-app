@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class RegistrationController {
 
@@ -25,7 +27,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") UserAppDto userAppDto) {
+    public String registerUser(@ModelAttribute("user") @Valid UserAppDto userAppDto) {
         userAppService.addUser(userAppDto);
         return "redirect:/";
     }
