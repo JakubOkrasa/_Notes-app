@@ -14,7 +14,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Collections;
@@ -48,11 +50,17 @@ public class HomeController {
     }
 
     @PostMapping("/add")
-    public String addNote(@ModelAttribute("note") @Valid NoteDto note) {
+    public String addNote(@ModelAttribute("note") @Valid NoteDto noteDto, BindingResult result, Errors errors) {
         SecurityContext securityContext = SecurityContextHolder.getContext();
-        note.setUserApp(userAppRepository
+        noteDto.setUserApp(userAppRepository
                 .findUserAppByLogin(securityContext.getAuthentication().getName()).orElseThrow(() -> new UsernameNotFoundException("Current user not found")));
-        noteService.addNote(note);
+        noteService.addNote(noteDto);
+//        if (result.hasErrors()) {
+//            return new ModelAndView("index", "note", noteDto);
+//        }
+//        else {
+//            return new ModelAndView("index", "note", noteDto);
+//        }
         return "redirect:/";
     }
 

@@ -3,11 +3,15 @@
 <head th:replace="fragments/header :: head"></head>
 <body>
     <div class="container">
-        <h2>Add new account.</h2>
+        <h2>Create new account.</h2>
         <br/>
         <form th:action="@{/register}" th:object="${user}" method="post" action="/register">
             <p><input type="text" name="login" placeholder="Login"/></p>
+            <p th:each="error : ${#fields.errors('login')}"
+               th:text="${error}">Validation error</p>
             <p><input type="password" name="password" placeholder="Password"/></p>
+            <p th:each="error : ${#fields.errors('password')}"
+               th:text="${error}">Validation error</p>
             <button class="btn btn-sm btn-success" type="submit">Register</button>
         </form>
     </div>
