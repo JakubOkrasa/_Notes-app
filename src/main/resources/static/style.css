@@ -37,7 +37,7 @@ input {
     box-sizing: border-box;
 }
 
-#viewer {
+.viewer {
     margin-left: auto;
     margin-right: auto;
     margin-top: 200px;

@@ -76,15 +76,14 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/edit/{id}")
-    public String showUpdateForm(@PathVariable long id, Model model) {
-        Note note = noteService.getNoteById(id);
-        model.addAttribute("noteToEdit", note);
+    @GetMapping("/edit")
+    public String showUpdateForm(@RequestParam(value = "editNoteId") Long id, Model model) {
+        model.addAttribute("noteToEdit", noteService.getNoteById(id));
         return "edit";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateNote(@PathVariable long id, @Valid Note note, BindingResult result, Model model) {
+    @PostMapping("/update")
+    public String updateNote(@RequestParam(value="updateNoteId") Long id, @Valid Note note, BindingResult result, Model model) {
         if (result.hasErrors()) {
             note.setId(id);
             return "edit";

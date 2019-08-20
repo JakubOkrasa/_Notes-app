@@ -24,11 +24,11 @@
                             <input type="hidden" th:value="${n.getId()}" name="viewNoteId">
                             <button class="btn btn-info" type="submit">View</button>
                         </form>
-                        <!--<form action="/edit" method="post">-->
-                            <!--<input type="hidden" th:value="${n.getNoteTitle()}" name="noteTitle" />-->
-                            <!--<button class="btn btn-info" type="submit">Edit</button>-->
-                        <!--</form>-->
-                        <a th:href="@{/edit/{id}(id=${n.getId()})}" class="btn btn-info" role="button">Edit</a>
+                        <form action="/edit" method="get">
+                            <input type="hidden" th:value="${n.getId()}" name="editNoteId" />
+                            <button class="btn btn-info" type="submit">Edit</button>
+                        </form>
+<!--                        <a th:href="@{/edit/{id}(id=${n.getId()})}" class="btn btn-info" role="button">Edit</a>-->
 
 
                         <form action="/delete" method="get">
