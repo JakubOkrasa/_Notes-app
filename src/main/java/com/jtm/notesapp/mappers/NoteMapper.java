@@ -12,7 +12,7 @@ public class NoteMapper implements Mapper<Note, NoteDto> {
     public NoteDto map(Note from) {
         return NoteDto.builder()
                 .NoteTitle(from.getNoteTitle())
-                .NoteCategory(from.getNoteCategory())
+//                .NoteCategory(from.getNoteCategory())
                 .NoteContent(from.getNoteContent())
                 .userApp(from.getUserApp())
                 .build();
@@ -22,7 +22,7 @@ public class NoteMapper implements Mapper<Note, NoteDto> {
     public Note reverseMap(NoteDto to) {
         return Note.builder()
                 .noteTitle(to.getNoteTitle())
-                .noteCategory(to.getNoteCategory())
+//                .noteCategory(to.getNoteCategory())
                 .noteContent(to.getNoteContent())
                 .userApp(to.getUserApp())
                 .build();

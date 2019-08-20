@@ -16,7 +16,6 @@ public class CustomUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        System.out.println("USERS IN DB: \n");
         userAppRepository.findAll().stream().forEach(System.out::println);
         return userAppRepository.findUserAppByLogin(name)
                 .map(CustomUserDetails::new)
