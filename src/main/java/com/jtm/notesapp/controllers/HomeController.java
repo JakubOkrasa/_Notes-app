@@ -2,18 +2,26 @@ package com.jtm.notesapp.controllers;
 
 import com.jtm.notesapp.commons.security.UserAppRepository;
 import com.jtm.notesapp.models.DTOs.NoteDto;
+import com.jtm.notesapp.models.DTOs.UserAppDto;
 import com.jtm.notesapp.models.Note;
+import com.jtm.notesapp.models.UserApp;
 import com.jtm.notesapp.repositories.NoteRepository;
 import com.jtm.notesapp.services.NoteService;
+import com.jtm.notesapp.services.UserAppService;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -42,11 +50,17 @@ public class HomeController {
     }
 
     @PostMapping("/add")
-    public String addNote(@ModelAttribute NoteDto note) {
+    public String addNote(@ModelAttribute("note") @Valid NoteDto noteDto, BindingResult result, Errors errors) {
         SecurityContext securityContext = SecurityContextHolder.getContext();
-        note.setUserApp(userAppRepository
+        noteDto.setUserApp(userAppRepository
                 .findUserAppByLogin(securityContext.getAuthentication().getName()).orElseThrow(() -> new UsernameNotFoundException("Current user not found")));
-        noteService.addNote(note);
+        noteService.addNote(noteDto);
+//        if (result.hasErrors()) {
+//            return new ModelAndView("index", "note", noteDto);
+//        }
+//        else {
+//            return new ModelAndView("index", "note", noteDto);
+//        }
         return "redirect:/";
     }
 
@@ -70,7 +84,7 @@ public class HomeController {
     }
 
     @PostMapping("/update/{id}")
-    public  String updateNote(@PathVariable long id, @Valid Note note, BindingResult result, Model model) {
+    public String updateNote(@PathVariable long id, @Valid Note note, BindingResult result, Model model) {
         if (result.hasErrors()) {
             note.setId(id);
             return "edit";
@@ -86,6 +100,5 @@ public class HomeController {
     public String loginPage() {
         return "login";
     }
-
 
 }

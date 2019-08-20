@@ -26,10 +26,10 @@ public class Note {
     @Size(min=1)
     private String noteTitle;
 
-    @Column(name="note_category")
-    @NotBlank(message="Note category is required.")
-    @Size(min=1, max=15)
-    private String noteCategory;
+//    @Column(name="note_category")
+//    @NotBlank(message="Note category is required.")
+//    @Size(min=1, max=15)
+//    private String noteCategory;
 
     @Column(name = "note_content", length=1024)
     @NotBlank(message="Note content is required.")

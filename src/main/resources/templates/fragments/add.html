@@ -8,7 +8,13 @@
             <!--</div>-->
             <form th:action="@{/add}" th:object="${note}" method="post" action="/add">
                 <input type="text" name="noteTitle" placeholder="Note Title"/>
-                <input type="text" name="noteCategory" placeholder="Note Category"/>
+<!--                <p th:each="error : ${#fields.errors('noteTitle')}"-->
+<!--                   th:text="${error}">Validation error</p>-->
+
+<!--                <input type="text" name="noteCategory" placeholder="Note Category"/>-->
+
+<!--                <p th:each="error : ${#fields.errors('noteCategory')}"-->
+<!--                th:text="${error}">Validation error.</p>-->
                 <textarea type="text" rows="15" cols="40" name="noteContent" placeholder="Your note"></textarea>
                 <button class="btn btn-sm btn-success" type="submit">Create</button>
             </form>
