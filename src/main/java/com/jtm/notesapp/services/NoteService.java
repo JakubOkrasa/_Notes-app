@@ -84,6 +84,9 @@ public class NoteService {
 
     public void deleteNotesByNoteTitle(String noteTitle) { noteRepository.deleteByNoteTitle(noteTitle); }
 
+    public void findNotesByTitle(String noteTitle) {
+        noteRepository.findNotesByNoteTitleContainingIgnoreCase(noteTitle);
+    }
 
 
 

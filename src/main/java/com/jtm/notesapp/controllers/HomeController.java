@@ -100,4 +100,15 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/find")
+    public String getFindPage() {
+        return "/find";
+    }
+
+    @PostMapping("/find")
+    public String findNotesByTitle(@RequestParam(value = "searchingPhrase") String searchingPhrase) {
+        noteService.findNotesByTitle(searchingPhrase);
+        return "found";
+    }
+
 }
