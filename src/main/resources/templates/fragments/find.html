@@ -1,0 +1,23 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="fragments/header :: head"></head>-->
+<!--<body>-->
+    <div class="container" xmlns:th="http://www.thymeleaf.org" th:fragment="find">
+        <form class="form-inline mr-auto" method="get" th:action="@{/find}" th:object="${noteDto}">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="search" th:value="${searchingPhrase}" name="searchingPhrase">
+            <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit" value="Search">Search</button>
+            <div th:unless="${#lists.isEmpty(search)}">
+                <h3>Search Results:</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Note title</th>
+                    </tr>
+                    <tr th:each="noteDto: ${foundNotes}">
+                        <td th:text="${noteDto.noteTitle}">note title</td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+<!--</body>-->
+<!--</html>-->

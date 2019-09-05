@@ -2,12 +2,9 @@ package com.jtm.notesapp.controllers;
 
 import com.jtm.notesapp.commons.security.UserAppRepository;
 import com.jtm.notesapp.models.DTOs.NoteDto;
-import com.jtm.notesapp.models.DTOs.UserAppDto;
 import com.jtm.notesapp.models.Note;
-import com.jtm.notesapp.models.UserApp;
 import com.jtm.notesapp.repositories.NoteRepository;
 import com.jtm.notesapp.services.NoteService;
-import com.jtm.notesapp.services.UserAppService;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,12 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -100,15 +93,15 @@ public class HomeController {
         return "login";
     }
 
+
     @GetMapping("/find")
-    public String getFindPage() {
-        return "/find";
+    public String findNotesByTitle(@RequestParam(value = "searchingPhrase") String searchingPhrase, Model model) {
+        model.addAttribute("foundNotes", noteService.getNotesDtoByTitle(searchingPhrase));
+        return "find";
     }
 
-    @PostMapping("/find")
-    public String findNotesByTitle(@RequestParam(value = "searchingPhrase") String searchingPhrase) {
-        noteService.findNotesByTitle(searchingPhrase);
-        return "found";
-    }
-
+//    @GetMapping("/found")
+//    public String getFoundResults() {
+//        return "/find";
+//    }
 }
