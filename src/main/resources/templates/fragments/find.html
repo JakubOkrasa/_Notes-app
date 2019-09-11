@@ -6,17 +6,19 @@
         <form class="form-inline mr-auto" method="get" th:action="@{/find}" th:object="${noteDto}">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="search" th:value="${searchingPhrase}" name="searchingPhrase">
             <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit" value="Search">Search</button>
-            <div th:unless="${#lists.isEmpty(search)}">
+            <!--<div th:unless="${#lists.isEmpty(search)}">-->
                 <h3>Search Results:</h3>
                 <table class="table table-striped">
                     <tr>
                         <th>Note title</th>
+                        <th>Note title</th>
                     </tr>
                     <tr th:each="noteDto: ${foundNotes}">
+                        <td>something</td>
                         <td th:text="${noteDto.noteTitle}">note title</td>
                     </tr>
                 </table>
-            </div>
+            <!--</div>-->
         </form>
     </div>
 <!--</body>-->
