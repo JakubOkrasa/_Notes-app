@@ -5,6 +5,9 @@ import com.jtm.notesapp.mappers.NoteMapper;
 import com.jtm.notesapp.models.DTOs.NoteDto;
 import com.jtm.notesapp.models.Note;
 import com.jtm.notesapp.repositories.NoteRepository;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -72,8 +75,8 @@ public class NoteService {
                 });
     }
 
-
-
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PostFilter("filterObject.userApp == authentication.name")
     public List<NoteDto> getNotesDtoByTitle(String noteTitle) {
         List<Note> notesList = new ArrayList<>();
         noteRepository

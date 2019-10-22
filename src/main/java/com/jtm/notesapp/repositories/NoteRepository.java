@@ -4,6 +4,7 @@ import com.jtm.notesapp.models.Note;
 import com.jtm.notesapp.models.UserApp;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.security.access.prepost.PostFilter;
 
 import javax.transaction.Transactional;
 import java.util.List;
