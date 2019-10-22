@@ -89,8 +89,10 @@ public class HomeController {
             return "edit";
         }
         SecurityContext securityContext = SecurityContextHolder.getContext();
+        note.setId(id);
         note.setUserApp(userAppRepository
-                .findUserAppByLogin(securityContext.getAuthentication().getName()).orElseThrow(() -> new UsernameNotFoundException("Error saving UserApp in updating note.")));
+                .findUserAppByLogin(securityContext.getAuthentication().getName())
+                .orElseThrow(() -> new UsernameNotFoundException("Error saving UserApp in updating note.")));
         noteRepository.save(note);
         return "redirect:/";
     }
