@@ -78,6 +78,8 @@ public class NoteService {
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostFilter("filterObject.userApp == authentication.name")
     public List<NoteDto> getNotesDtoByTitle(String noteTitle) {
+        SecurityContext sc = SecurityContextHolder.getContext();
+        System.out.println("current ROLE: " + sc.getAuthentication().getAuthorities().toString());
         List<Note> notesList = new ArrayList<>();
         noteRepository
                 .findNotesByNoteTitleContainingIgnoreCase(noteTitle)
