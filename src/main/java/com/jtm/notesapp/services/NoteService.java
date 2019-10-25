@@ -5,6 +5,8 @@ import com.jtm.notesapp.mappers.NoteMapper;
 import com.jtm.notesapp.models.DTOs.NoteDto;
 import com.jtm.notesapp.models.Note;
 import com.jtm.notesapp.repositories.NoteRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class NoteService {
+    private static final Logger logger = LoggerFactory.getLogger(NoteService.class);
 
     private NoteRepository noteRepository;
     private NoteMapper noteMapper;
@@ -79,7 +82,8 @@ public class NoteService {
     @PostFilter("filterObject.userApp == authentication.name")
     public List<NoteDto> getNotesDtoByTitle(String noteTitle) {
         SecurityContext sc = SecurityContextHolder.getContext();
-        System.out.println("current ROLE: " + sc.getAuthentication().getAuthorities().toString());
+        logger.info("current ROLE in NoteService: " + sc.getAuthentication().getAuthorities().toString());
+//        System.out.println("current ROLE: " + sc.getAuthentication().getAuthorities().toString());
         List<Note> notesList = new ArrayList<>();
         noteRepository
                 .findNotesByNoteTitleContainingIgnoreCase(noteTitle)
