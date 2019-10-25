@@ -16,10 +16,15 @@ public class CustomUserDetails extends UserApp implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        System.out.println();
+        getRoles().stream().forEach(r -> System.out.println("getroles: " + r.getRole()));
+        System.out.println();
         return getRoles()
                 .stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_"+role.getRole()))
                 .collect(Collectors.toList());
+
+
     }
 
     @Override

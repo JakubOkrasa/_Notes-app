@@ -5,17 +5,25 @@ import com.jtm.notesapp.mappers.NoteMapper;
 import com.jtm.notesapp.models.DTOs.NoteDto;
 import com.jtm.notesapp.models.Note;
 import com.jtm.notesapp.repositories.NoteRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class NoteService {
+    private static final Logger logger = LoggerFactory.getLogger(NoteService.class);
 
     private NoteRepository noteRepository;
     private NoteMapper noteMapper;
@@ -70,19 +78,18 @@ public class NoteService {
                 });
     }
 
-
-
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PostFilter("filterObject.userApp.login == authentication.name")
     public List<NoteDto> getNotesDtoByTitle(String noteTitle) {
-        List<Note> notesList = new ArrayList<>();
-        noteRepository
-                .findNotesByNoteTitleContainingIgnoreCase(noteTitle)
-                .ifPresent(n -> notesList.add(n));
-        return notesList.stream()
-                .map(n -> noteMapper.map(n))
-                .collect(Collectors.toList());
+        SecurityContext sc = SecurityContextHolder.getContext();
+        logger.info("current ROLE in NoteService: " + sc.getAuthentication().getAuthorities().toString());
+        return noteRepository.findNotesByNoteTitleContainingIgnoreCase(noteTitle).stream()
+        .map(n -> noteMapper.map(n))
+        .collect(Collectors.toList());
     }
 
     public void deleteNotesByNoteTitle(String noteTitle) { noteRepository.deleteByNoteTitle(noteTitle); }
+
 
 
 
