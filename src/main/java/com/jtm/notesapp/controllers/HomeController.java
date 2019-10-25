@@ -99,11 +99,6 @@ public class HomeController {
         return "index";
     }
 
-//    @GetMapping("/found")
-//    public String getFoundResults() {
-//        return "/find";
-//    }
-
     public void prepareHomepage(Model model) {
         model.addAttribute("notes", noteService.getNotesByUserApp());
         SecurityContext securityContext = SecurityContextHolder.getContext();
