@@ -31,9 +31,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String getHomepage(Model model) {
-        model.addAttribute("notes", noteService.getNotesByUserApp());
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        model.addAttribute("message", "you are logged in as " + securityContext.getAuthentication().getName());
+        prepareHomepage(model);
         return "index";
     }
 
@@ -96,6 +94,7 @@ public class HomeController {
 
     @GetMapping("/find")
     public String findNotesByTitle(@RequestParam(value = "searchingPhrase") String searchingPhrase, Model model) {
+        prepareHomepage(model);
         model.addAttribute("foundNotes", noteService.getNotesDtoByTitle(searchingPhrase));
         return "index";
     }
@@ -104,4 +103,10 @@ public class HomeController {
 //    public String getFoundResults() {
 //        return "/find";
 //    }
+
+    public void prepareHomepage(Model model) {
+        model.addAttribute("notes", noteService.getNotesByUserApp());
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        model.addAttribute("message", "you are logged in as " + securityContext.getAuthentication().getName());
+    }
 }
