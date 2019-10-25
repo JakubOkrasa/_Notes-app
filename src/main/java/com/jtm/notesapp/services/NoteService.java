@@ -83,13 +83,9 @@ public class NoteService {
     public List<NoteDto> getNotesDtoByTitle(String noteTitle) {
         SecurityContext sc = SecurityContextHolder.getContext();
         logger.info("current ROLE in NoteService: " + sc.getAuthentication().getAuthorities().toString());
-        List<Note> notesList = new ArrayList<>();
-        noteRepository
-                .findNotesByNoteTitleContainingIgnoreCase(noteTitle)
-                .ifPresent(n -> notesList.add(n));
-        return notesList.stream()
-                .map(n -> noteMapper.map(n))
-                .collect(Collectors.toList());
+        return noteRepository.findNotesByNoteTitleContainingIgnoreCase(noteTitle).stream()
+        .map(n -> noteMapper.map(n))
+        .collect(Collectors.toList());
     }
 
     public void deleteNotesByNoteTitle(String noteTitle) { noteRepository.deleteByNoteTitle(noteTitle); }
