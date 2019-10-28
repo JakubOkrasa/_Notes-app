@@ -104,6 +104,6 @@ public class HomeController {
     public void prepareHomepage(Model model) {
         model.addAttribute("notes", noteService.getNotesByUserApp());
         SecurityContext securityContext = SecurityContextHolder.getContext();
-        model.addAttribute("message", "you are logged in as " + securityContext.getAuthentication().getName());
+        model.addAttribute("username", securityContext.getAuthentication().getName());
     }
 }
