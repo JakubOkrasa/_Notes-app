@@ -110,3 +110,18 @@ input {
     padding: 10px;
     box-sizing: border-box;
 }
+
+#username {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#avatar {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#logout {
+    margin-left: 15px;
+    margin-right: 15px;
+}
