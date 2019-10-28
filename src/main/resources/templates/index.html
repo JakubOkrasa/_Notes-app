@@ -3,7 +3,8 @@
 <head th:replace="fragments/header :: head"></head>
 <body>
 <div id="main-container">
-<header class="superhead">
+    <head th:replace="fragments/topbar :: topbar"></head>
+    <header class="superhead">
             Welcome in <span class="content-header">Notes-app</span>
             <a href="/logout"><p>logout</p></a> <br>
             <p th:text="${message}"></p>

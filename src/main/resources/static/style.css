@@ -57,3 +57,40 @@ input {
     left: 0;
     right: 0;
 }
+
+#topbar {
+    background-color: darkblue;
+    width: 100%;
+    height: 70px;
+    box-shadow: 3px 5px 40px #313138;
+    color: rgb(189, 220, 255);
+    display: flex;
+
+}
+
+#brand {
+    background-color: rgb(92, 92, 255);
+    width: 250px;
+    height: 70px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#searchbox {
+    background-color: rgb(151, 151, 255);
+    width: 400px;
+    height: 70px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+#user-info {
+    display: flex;
+    background-color: rgb(92, 92, 255);
+    width: 250px;
+    height: 70px;
+    padding: 10px;
+    box-sizing: border-box;
+}
