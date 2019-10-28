@@ -73,12 +73,33 @@ input {
 
 #searchbox {
   /*  background-color: rgb(92, 92, 255); */
-    width: 400px;
+    width: 500px;
     height: 70px;
     padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     box-sizing: border-box;
+}
+
+#searchbox input {
+    font-size: 30px;
+    width: 400px;
+    height: 50px;
+    background-color: #6699ff;
+}
+
+#searchbox input::placeholder {
+    color: black;
+}
+
+#searchbox button {
+    font-weight: bold;
+    height: 50px;
+    width: 65px;
+    text-align: center;
+    background-color: darkblue;
+    border-style: solid;
+    border-color: #6699ff;
+    border-width: 3px;
 }
 
 #user-info {

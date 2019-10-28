@@ -1,7 +1,5 @@
     <div class="container" xmlns:th="http://www.thymeleaf.org" th:fragment="find">
         <form class="form-inline mr-auto" method="get" th:action="@{/find}" th:object="${noteDto}">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search a note" aria-label="Search" id="search" th:value="${searchingPhrase}" name="searchingPhrase">
-            <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit" value="Search">Search</button>
             <div th:unless="${#lists.isEmpty(foundNotes)}">
                 <h3>Search Results:</h3>
                 <table class="table table-striped">
