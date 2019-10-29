@@ -3,11 +3,8 @@
 <head th:replace="fragments/header :: head"></head>
 <body>
 <div id="main-container">
-<header class="superhead">
-            Welcome in <span class="content-header">Notes-app</span>
-            <a href="/logout"><p>logout</p></a> <br>
-            <p th:text="${message}"></p>
-</header>
+    <div th:replace="fragments/topbar :: topbar"></div>
+
 
 <div style="display: flex; flex-direction: row;">
     <div id="cards-wrapper">

@@ -1,0 +1,24 @@
+    <div id="topbar" xmlns:th="http://thymeleaf.org" th:fragment="topbar">
+        <div id="brand">
+                Welcome in <span class="content-header">Notes-app</span>
+        </div>
+        <div id="searchbox">
+            <form class="form-inline mr-auto" method="get" th:action="@{/find}" th:object="${noteDto}">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search a note" aria-label="Search" id="search" th:value="${searchingPhrase}" name="searchingPhrase">
+                <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit" value="Search"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div id=user-info>
+            <div id="avatar">
+                <i class="fas fa-user-alt"></i>
+            </div>
+            <div id="username">
+                <p th:text="${username}"></p>
+            </div>
+            <div id="logout">
+                <a href="/logout" class="fas fa-sign-out-alt"></a>
+            </div>
+        </div>
+    </div>
+
+    <!--<i class="fas fa-sign-out-alt"></i>-->
