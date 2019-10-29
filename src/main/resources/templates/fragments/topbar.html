@@ -5,19 +5,20 @@
         <div id="searchbox">
             <form class="form-inline mr-auto" method="get" th:action="@{/find}" th:object="${noteDto}">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search a note" aria-label="Search" id="search" th:value="${searchingPhrase}" name="searchingPhrase">
-                <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit" value="Search">Search</button>
+                <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit" value="Search"><i class="fas fa-search"></i></button>
             </form>
         </div>
         <div id=user-info>
+            <div id="avatar">
+                <i class="fas fa-user-alt"></i>
+            </div>
             <div id="username">
                 <p th:text="${username}"></p>
             </div>
-            <div id="avatar">
-                user<br/>pic
-            </div>
             <div id="logout">
-                <i class="far fa-power-off"></i>
-                <a href="/logout"><p>logout</p></a> <br>
+                <a href="/logout" class="fas fa-sign-out-alt"></a>
             </div>
         </div>
     </div>
+
+    <!--<i class="fas fa-sign-out-alt"></i>-->
