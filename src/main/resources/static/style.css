@@ -64,7 +64,6 @@ input {
 }
 
 #brand {
-  /*  background-color: rgb(92, 92, 255); */
     width: 400px;
     height: 70px;
     padding: 10px;
@@ -72,7 +71,6 @@ input {
 }
 
 #searchbox {
-  /*  background-color: rgb(92, 92, 255); */
     width: 500px;
     height: 70px;
     padding: 10px;
@@ -104,7 +102,6 @@ input {
 
 #user-info {
     display: flex;
-  /*  background-color: rgb(92, 92, 255); */
     width: 250px;
     height: 70px;
     padding: 10px;
