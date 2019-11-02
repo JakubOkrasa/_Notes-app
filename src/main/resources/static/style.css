@@ -26,7 +26,8 @@ body {
 }
 
 .card-container {
-    width: 250px;
+    width: 450px;
+    height: 50px;
     background-color: cornflowerblue;
     margin-bottom: 15px;
     margin-left: 150px;
