@@ -9,6 +9,12 @@ body {
     opacity: 0.8;
 }
 
+#content-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-top: 200px;
+}
+
 #add-form-container {
     margin: 30px;
 }
