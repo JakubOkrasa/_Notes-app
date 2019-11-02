@@ -2,6 +2,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url('https://images.pexels.com/photos/544115/pexels-photo-544115.jpeg');
+    box-sizing: border-box;
 }
 
 #main-container {
