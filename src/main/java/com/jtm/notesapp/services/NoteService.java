@@ -80,12 +80,10 @@ public class NoteService {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostFilter("filterObject.userApp.login == authentication.name")
-    public List<NoteDto> getNotesDtoByTitle(String noteTitle) {
+    public List<Note> getNotesByTitle(String noteTitle) {
         SecurityContext sc = SecurityContextHolder.getContext();
         logger.info("current ROLE in NoteService: " + sc.getAuthentication().getAuthorities().toString());
-        return noteRepository.findNotesByNoteTitleContainingIgnoreCase(noteTitle).stream()
-        .map(n -> noteMapper.map(n))
-        .collect(Collectors.toList());
+        return noteRepository.findNotesByNoteTitleContainingIgnoreCase(noteTitle);
     }
 
     public void deleteNotesByNoteTitle(String noteTitle) { noteRepository.deleteByNoteTitle(noteTitle); }

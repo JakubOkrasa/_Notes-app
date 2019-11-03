@@ -1,0 +1,16 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="fragments/header :: head"></head>-->
+<!--<body>-->
+<!--<div class="container"></div>-->
+<div class="viewer" xmlns:th="http://www.thymeleaf.org" th:fragment="view">
+    <form th:action="@{/view}" th:object="${noteToView}" method="get">
+        <h3 th:text="*{getNoteTitle()}"></h3>
+        <br/>
+        <h5 th:text="*{getNoteContent()}"></h5>
+    <a href="/" class="btn">Back to the notes list</a>
+
+    </form>
+</div>
+<!--</body>-->
+<!--</html>-->
