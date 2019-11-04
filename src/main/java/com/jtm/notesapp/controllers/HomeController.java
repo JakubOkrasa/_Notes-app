@@ -97,7 +97,7 @@ public class HomeController {
     @GetMapping("/find")
     public String findNotesByTitle(@RequestParam(value = "searchingPhrase") String searchingPhrase, Model model) {
         prepareHomepage(model);
-        model.addAttribute("foundNotes", noteService.getNotesDtoByTitle(searchingPhrase));
+        model.addAttribute("notes", noteService.getNotesByTitle(searchingPhrase));
         return "index";
     }
 
