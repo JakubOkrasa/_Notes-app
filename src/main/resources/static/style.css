@@ -60,9 +60,10 @@ a:hover {
     margin-left: 150px;
     border-radius: 15px;
     padding: 10px;
+    display: block;
 }
 
-.note-simple {
+.note-on-list {
     display: flex;
     flex-direction: row;
 }
