@@ -3,7 +3,7 @@
 <!--<head th:replace="fragments/header :: head"></head>-->
 <!--<body>-->
 <!--<div class="container"></div>-->
-<div class="viewer" xmlns:th="http://www.thymeleaf.org" th:fragment="view">
+<div class="container" xmlns:th="http://www.thymeleaf.org" th:fragment="view">
     <form th:action="@{/view}" th:object="${noteToView}" method="get">
         <h3 th:text="*{getNoteTitle()}"></h3>
         <br/>
