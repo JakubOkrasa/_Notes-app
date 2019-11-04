@@ -1,6 +1,6 @@
     <div id="topbar" xmlns:th="http://thymeleaf.org" th:fragment="topbar">
         <div id="brand">
-                Welcome in <span class="content-header">Notes-app</span>
+                Welcome in <span class="content-header"><a href="/">Notes-app</a></span>
         </div>
         <div id="searchbox">
             <form class="form-inline mr-auto" method="get" th:action="@{/find}" th:object="${noteDto}">
