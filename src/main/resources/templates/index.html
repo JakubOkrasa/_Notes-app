@@ -1,45 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: head"></head>
-<body>
-<div id="main-container">
-    <div th:replace="fragments/topbar :: topbar"></div>
+    <head th:replace="fragments/header :: head"></head>
+    <body>
+    <div id="main-container">
+        <div th:replace="fragments/topbar :: topbar"></div>
 
 
-<div id="content-wrapper">
-    <div id="cards-wrapper">
-        <div th:each="n : ${notes}" class="card-container">
-            <div class="card" style="margin: auto;">
-                <div class="note-simple">
-                    <h4 th:text="${n.getNoteTitle()}"></h4>
-                    <!--BUTTONS-->
-                    <div class="button-view">
-                        <form action="/view" method="get">
-                            <input type="hidden" th:value="${n.getId()}" name="viewNoteId">
-                            <button class="btn btn-info" type="submit">View</button>
-                        </form>
-                    </div>
-                    <!--<form action="/edit" method="get">-->
-                        <!--<input type="hidden" th:value="${n.getId()}" name="editNoteId" />-->
-                        <!--<button class="btn btn-info" type="submit">Edit</button>-->
-                    <!--</form>-->
-                    <div class="button-delete">
-                        <form action="/delete" method="get">
-                            <input type="hidden" th:value="${n.getId()}" name="delNoteId">
-                            <button class="btn btn-danger fas fa-trash-alt" type="submit"></button>
-                        </form>
-                    </div>
+            <div id="content-wrapper">
+                <div th:replace="fragments/notes-list :: notes-list"></div>
+                <div th:replace="fragments/add :: add"></div>
 
-                    <!--BUTTONS-->
-
-                </div>
             </div>
-
         </div>
-    </div>
-    <div th:replace="fragments/add :: add"></div>
-
-</div>
-</div>
-</body>
+    </body>
 </html>
