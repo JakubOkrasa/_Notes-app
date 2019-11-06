@@ -21,7 +21,7 @@ a:hover {
 }
 
 #main-container {
-    opacity: 0.8;
+/*    opacity: 0.8; it causes that bootstrap modal doesn't close itself */
 }
 
 #content-wrapper {
@@ -50,6 +50,7 @@ a:hover {
     margin-left: 150px;
     border-radius: 15px;
     padding: 10px;
+    text-align: center;
 }
 
 .note-on-list-wrapper {
