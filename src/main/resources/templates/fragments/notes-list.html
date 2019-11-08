@@ -1,5 +1,5 @@
 <div id="notes-list-wrapper" xmlns:th="http://thymeleaf.org" th:fragment="notes-list">
-    <div id="add-note-button"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#example-modal">
+    <div id="add-note-button"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
         New +
     </button></div>
     <div th:each="n : ${notes}" class="note-on-list-wrapper">

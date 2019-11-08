@@ -6,12 +6,12 @@ body {
 }
 
 a:link {
-    color: white;
+    color: whitesmoke;
     text-decoration: none;
 }
 
 a:visited {
-    color: white;
+    color: whitesmoke;
     text-decoration: none;
 }
 
@@ -27,13 +27,8 @@ a:hover {
 #content-wrapper {
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    /*flex-direction: row;*/
     margin-top: 200px;
-}
-
-#add-form-container {
-    margin: 30px;
-    width: 300px;
 }
 
 .content-header {
@@ -45,7 +40,7 @@ a:hover {
 #add-note-button {
     width: 450px;
     height: 50px;
-    background-color: white;
+    /*background-color: white;*/
     margin-bottom: 15px;
     margin-left: 150px;
     border-radius: 15px;

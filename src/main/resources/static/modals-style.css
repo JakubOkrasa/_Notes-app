@@ -1,0 +1,13 @@
+.modal-dialog {
+    width: 340px !important;
+    color: whitesmoke;
+}
+
+.modal-content {
+    background-color: #5957ff !important;
+}
+
+.modal-body {
+    margin-left: auto;
+    margin-right: auto;
+}
