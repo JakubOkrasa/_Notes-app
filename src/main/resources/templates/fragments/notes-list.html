@@ -1,16 +1,23 @@
 <div id="notes-list-wrapper" xmlns:th="http://thymeleaf.org" th:fragment="notes-list">
+    <script>
+    function submitViewForm() {
+    document.getElementById("view-form").submit();
+    }
+    </script>
     <div id="add-note-button"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
         New +
     </button></div>
     <div th:each="n : ${notes}" class="note-on-list-wrapper">
-        <!--<div class="card" style="margin: auto;">-->
+
             <div class="note-on-list">
                 <h4 th:text="${n.getNoteTitle()}"></h4>
                 <!--BUTTONS-->
                 <div class="button-view">
-                    <form action="/view" method="get">
+                    <form id="view-form" action="/view-modal" method="get">
                         <input type="hidden" th:value="${n.getId()}" name="viewNoteId">
-                        <button class="btn btn-info" type="submit">View</button>
+<!--                        TODO: find out how to use js and spring in the same button-->
+<!--                        <button class="btn btn-info" data-toggle="modal" data-target="#view-modal" type="button" onclick="submitViewForm()">View</button>-->
+                        <button class="btn btn-info" data-toggle="modal" data-target="#view-modal" type="button">View</button>
                     </form>
                 </div>
                 <!--<form action="/edit" method="get">-->
@@ -27,7 +34,8 @@
                 <!--BUTTONS-->
 
             </div>
-        <!--</div>-->
 
     </div>
+
+
 </div>
