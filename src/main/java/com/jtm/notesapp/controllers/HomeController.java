@@ -37,7 +37,7 @@ public class HomeController {
 
     @GetMapping("/add")
     public String getAddPage() {
-        return "/add";
+        return "/fragments/add";
     }
 
     @PostMapping("/add")
@@ -55,10 +55,11 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/view")
+    @GetMapping("/view-modal")
     public String viewNote(@RequestParam(value = "viewNoteId") Long id, Model model) {
         model.addAttribute("noteToView", noteService.getNoteById(id));
-        return "view";
+        prepareHomepage(model);
+        return "/fragments/view-modal";
     }
 
     @GetMapping("/delete")
