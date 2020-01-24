@@ -1,8 +1,20 @@
 <div id="notes-list-wrapper" xmlns:th="http://thymeleaf.org" th:fragment="notes-list">
     <script>
-    function submitViewForm() {
-    document.getElementById("view-form").submit();
+    function submit(id) {
+        const response = fetch('view-modal?id=' + id, {
+            method: 'GET',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            referrerPolicy: 'no-referrer',
+        });
+        response
+            .then((r) => r.json())
+            .then((json) => {
+                console.log(json);
+            }
+            );
     }
+
     </script>
     <div id="add-note-button"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
         New +
