@@ -1,5 +1,6 @@
 package com.jtm.notesapp.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,6 +35,7 @@ public class UserApp {
 
 
     @OneToMany(mappedBy = "userApp", fetch=FetchType.EAGER)
+    @JsonManagedReference
     private Set<Note> notes = new HashSet<>();
 
 

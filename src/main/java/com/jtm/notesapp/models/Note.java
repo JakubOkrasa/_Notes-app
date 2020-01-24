@@ -1,6 +1,7 @@
 package com.jtm.notesapp.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -38,6 +39,7 @@ public class Note {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private UserApp userApp;
 
     public void setUserApp(UserApp userApp) {
