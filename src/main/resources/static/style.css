@@ -183,3 +183,7 @@ input {
     margin-right: 15px;
     display: block;
 }
+
+#mod-view-title {
+    font-weight: bold;
+}
