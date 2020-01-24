@@ -25,12 +25,7 @@
                 <h4 th:text="${n.getNoteTitle()}"></h4>
                 <!--BUTTONS-->
                 <div class="button-view">
-                    <form id="view-form" action="/view-modal" method="get">
-                        <input type="hidden" th:value="${n.getId()}" name="viewNoteId">
-<!--                        TODO: find out how to use js and spring in the same button-->
-<!--                        <button class="btn btn-info" data-toggle="modal" data-target="#view-modal" type="button" onclick="submitViewForm()">View</button>-->
-                        <button class="btn btn-info" data-toggle="modal" data-target="#view-modal" type="button">View</button>
-                    </form>
+                        <button class="btn btn-info" th:onclick="'submit(\'' + ${n.getId()} + '\');'" data-toggle="modal" data-target="#view-modal" type="button">View</button>
                 </div>
                 <!--<form action="/edit" method="get">-->
                 <!--<input type="hidden" th:value="${n.getId()}" name="editNoteId" />-->
