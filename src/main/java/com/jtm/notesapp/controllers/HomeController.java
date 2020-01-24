@@ -35,11 +35,6 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/add")
-    public String getAddPage() {
-        return "/fragments/add";
-    }
-
     @PostMapping("/add")
     public String addNote(@ModelAttribute("note") @Valid NoteDto noteDto, BindingResult result, Errors errors) {
         SecurityContext securityContext = SecurityContextHolder.getContext();
