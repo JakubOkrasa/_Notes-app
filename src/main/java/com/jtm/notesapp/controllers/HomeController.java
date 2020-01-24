@@ -45,10 +45,9 @@ public class HomeController {
     }
 
     @GetMapping("/view-modal")
-    public String viewNote(@RequestParam(value = "viewNoteId") Long id, Model model) {
-        model.addAttribute("noteToView", noteService.getNoteById(id));
-        prepareHomepage(model);
-        return "/fragments/view-modal";
+    @ResponseBody
+    public Note viewNote(@RequestParam Long id) {
+        return noteService.getNoteById(id);
     }
 
     @GetMapping("/delete")
