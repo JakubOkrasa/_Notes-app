@@ -41,12 +41,6 @@ public class HomeController {
         noteDto.setUserApp(userAppRepository
                 .findUserAppByLogin(securityContext.getAuthentication().getName()).orElseThrow(() -> new UsernameNotFoundException("Current user not found")));
         noteService.addNote(noteDto);
-//        if (result.hasErrors()) {
-//            return new ModelAndView("index", "note", noteDto);
-//        }
-//        else {
-//            return new ModelAndView("index", "note", noteDto);
-//        }
         return "redirect:/";
     }
 
