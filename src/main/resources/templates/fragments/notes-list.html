@@ -1,23 +1,4 @@
 <div id="notes-list-wrapper" xmlns:th="http://thymeleaf.org" th:fragment="notes-list">
-    <script>
-    function submit(id) {
-        const response = fetch('view-modal?id=' + id, {
-            method: 'GET',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            referrerPolicy: 'no-referrer',
-        });
-        response
-            .then((r) => r.json())
-            .then((json) => {
-                console.log(json);
-                document.getElementById("mod-view-title").innerHTML = json.noteTitle;
-                document.getElementById("mod-view-content").innerHTML = json.noteContent;
-            }
-            );
-    }
-
-    </script>
     <div id="add-note-button"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
         New +
     </button></div>
@@ -27,7 +8,7 @@
                 <h4 th:text="${n.getNoteTitle()}"></h4>
                 <!--BUTTONS-->
                 <div class="button-view">
-                        <button class="btn btn-info" th:onclick="'submit(\'' + ${n.getId()} + '\');'" data-toggle="modal" data-target="#view-modal" type="button">View</button>
+                        <button class="btn btn-info" th:onclick="'viewNote(\'' + ${n.getId()} + '\');'" data-toggle="modal" data-target="#view-modal" type="button">View</button>
                 </div>
                 <!--<form action="/edit" method="get">-->
                 <!--<input type="hidden" th:value="${n.getId()}" name="editNoteId" />-->
