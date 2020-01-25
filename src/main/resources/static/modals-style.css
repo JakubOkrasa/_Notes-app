@@ -11,3 +11,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+#mod-view-title {
+    font-weight: bold;
+}
