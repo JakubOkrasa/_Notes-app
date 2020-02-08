@@ -30,4 +30,20 @@ function viewNote(id) {
 
             }
         );
+
+}
+
+function editNote() {
+    console.log("editNote JS function call");
+    document.getElementById("mod-title").innerHTML = "<input type='text' value='" + note.noteTitle + "'>";
+    let content_textarea = document.createElement("TEXTAREA");
+    content_textarea.value = note.noteContent;
+    document.getElementById("mod-content").innerHTML="";
+    document.getElementById("mod-content").insertAdjacentElement('afterbegin', content_textarea);
+    document.getElementById("mod-btn").innerHTML = "<button class=\"btn btn-info\" onclick=\"updateNote()\" type=\"button\">Save</button>"
+}
+
+function updateNote() {
+    console.log("updateNote JS function call");
+
 }
