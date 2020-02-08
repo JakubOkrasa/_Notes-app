@@ -23,8 +23,11 @@ function viewNote(id) {
         .then((r) => r.json())
         .then((json) => {
                 console.log(json);
-                document.getElementById("mod-view-title").innerHTML = json.noteTitle;
-                document.getElementById("mod-view-content").innerHTML = json.noteContent;
+                note.title = json.noteTitle;
+                note.content = json.noteContent;
+                document.getElementById("mod-title").innerHTML = json.noteTitle;
+                document.getElementById("mod-content").innerHTML = json.noteContent;
+
             }
         );
 }
