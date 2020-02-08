@@ -1,3 +1,17 @@
+let note = {
+    noteTitle: "",
+    noteContent: "",
+    set title(title) {
+        this.noteTitle = title;
+    },
+    set content(content) {
+        this.noteContent = content;
+    }
+};
+
+//TODO let vs var vs const. Is let the best choice here?
+
+
 function viewNote(id) {
     const response = fetch('view-modal?id=' + id, {
         method: 'GET',
