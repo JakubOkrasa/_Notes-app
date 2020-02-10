@@ -1,3 +1,5 @@
+//TODO code review Karola
+
 let note = {
     noteTitle: "",
     noteContent: "",
@@ -40,10 +42,17 @@ function editNote() {
     content_textarea.value = note.noteContent;
     document.getElementById("mod-content").innerHTML="";
     document.getElementById("mod-content").insertAdjacentElement('afterbegin', content_textarea);
-    document.getElementById("mod-btn").innerHTML = "<button class=\"btn btn-info\" onclick=\"updateNote()\" type=\"button\">Save</button>"
+    document.getElementById("mod-btn").innerHTML = "<button class=\"btn btn-info\" onclick=\"updateNote()\" type=\"button\">Save</button>";
 }
 
 function updateNote() {
     console.log("updateNote JS function call");
 
+}
+
+//back to note look from before edit
+function closeNote() {
+    document.getElementById("mod-title").innerHTML = note.noteTitle;
+    document.getElementById("mod-content").innerHTML = note.noteContent;
+    document.getElementById("mod-btn").innerHTML = "<button class=\"btn btn-info\" onclick=\"editNote()\" type=\"button\">Edit</button>";
 }
