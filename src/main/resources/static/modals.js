@@ -1,8 +1,10 @@
-//TODO code review Karola
-
 let note = {
+    id: "",
     noteTitle: "",
     noteContent: "",
+    set noteId(noteId) { //todo refactor: make consistent naming: e.g. noteId, noteTitle, noteContent. Probably it requires changes in controller or service
+        this.id = noteId
+    },
     set title(title) {
         this.noteTitle = title;
     },
@@ -15,6 +17,7 @@ let note = {
 
 
 function viewNote(id) {
+    note.noteId = id;
     const response = fetch('view-modal?id=' + id, {
         method: 'GET',
         cache: 'no-cache',
