@@ -62,20 +62,26 @@ public class HomeController {
         return "edit";
     }
 
-    @PostMapping("/update")
-    public String updateNote(@RequestParam(value="updateNoteId") Long id, @Valid Note note, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            note.setId(id);
-            return "edit";
+    @PostMapping("/view-modal")
+    public String updateNote(@RequestBody Note note) {
+        try {
+            noteRepository.findNotesById(note.getId());
+            note.setNoteTitle(note.getNoteTitle());
+            note.setNoteContent(note.getNoteContent());
+            SecurityContext securityContext = SecurityContextHolder.getContext();
+            note.setUserApp(userAppRepository
+                    .findUserAppByLogin(securityContext.getAuthentication().getName())
+                    .orElseThrow(() -> new UsernameNotFoundException("Error saving UserApp in updating note.")));
+            noteRepository.save(note);
         }
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        note.setId(id);
-        note.setUserApp(userAppRepository
-                .findUserAppByLogin(securityContext.getAuthentication().getName())
-                .orElseThrow(() -> new UsernameNotFoundException("Error saving UserApp in updating note.")));
-        noteRepository.save(note);
-        return "redirect:/";
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+            return "redirect:/"; //todo should be another view returned?
+
     }
+
+
 
     @GetMapping("/login")
     public String loginPage() {
