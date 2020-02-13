@@ -15,6 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -64,8 +66,9 @@ public class NoteService {
     }
 
     public Note addNote(NoteDto noteDto) {
-
-        return noteRepository.save(noteMapper.reverseMap(noteDto));
+        Note note = noteMapper.reverseMap(noteDto);
+        note.setNoteModificationTime(Timestamp.valueOf(LocalDateTime.now()));
+        return noteRepository.save(note);
     }
 
     public void updateNoteByNoteTitle(NoteDto noteDto) {
