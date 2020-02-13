@@ -55,7 +55,7 @@ function updateNote() {
 }
 
 //back to note look from before edit
-function closeNote() {
+function makeViewNoteLook() {
     document.getElementById("mod-title").innerHTML = note.noteTitle;
     document.getElementById("mod-content").innerHTML = note.noteContent;
     document.getElementById("mod-btn").innerHTML = "<button class=\"btn btn-info\" onclick=\"editNote()\" type=\"button\">Edit</button>";
