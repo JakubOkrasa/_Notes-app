@@ -3,9 +3,11 @@ package com.jtm.notesapp.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -36,6 +38,10 @@ public class Note {
     @NotBlank(message="Note content is required.")
     @Size(max = 1024)
     private String noteContent;
+
+    @Column
+    @NotNull
+    private java.sql.Timestamp noteModificationTime;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
