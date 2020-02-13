@@ -13,16 +13,16 @@ let note = {
     }
 };
 
-//TODO let vs var vs const. Is let the best choice here?
-
+//Refresh page(also notes titles) after closure of modal because a note might have been edited
+$(document).on('hidden.bs.modal','#view-modal', function () {
+    window.location.reload();
+})
 
 function viewNote(id) {
     note.noteId = id;
     const response = fetch('view-modal?id=' + id, {
         method: 'GET',
         cache: 'no-cache',
-        credentials: 'same-origin',
-        referrerPolicy: 'no-referrer',
     });
     response
         .then((r) => r.json())
@@ -34,7 +34,8 @@ function viewNote(id) {
                 document.getElementById("mod-content").innerHTML = json.noteContent;
 
             }
-        );
+        )
+        .catch(error => console.error(error))
 
 }
 
