@@ -50,8 +50,17 @@ function editNote() {
 }
 
 function updateNote() {
-    console.log("updateNote JS function call");
-
+    note.noteTitle = document.getElementById("mod-title").getElementsByTagName("input")[0].value;
+    note.noteContent = document.getElementById("mod-content").getElementsByTagName("textarea")[0].value;
+    const request = fetch('view-modal', {
+        method: 'POST',
+        body: JSON.stringify(note),
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    makeViewNoteLook()
 }
 
 //back to note look from before edit
