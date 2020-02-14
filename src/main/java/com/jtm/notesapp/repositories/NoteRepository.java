@@ -30,7 +30,7 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     void deleteByNoteTitle(String noteTitle);
 
     Note findNotesById(Long noteID);
-
-    List<Note> findNotesByUserApp(UserApp userApp);
+    
+    List<Note> findNotesByUserAppOrderByNoteModificationTimeDesc(UserApp userApp);
 
 }

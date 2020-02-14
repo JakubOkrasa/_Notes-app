@@ -15,6 +15,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Controller
 public class HomeController {
@@ -68,6 +70,7 @@ public class HomeController {
             noteRepository.findNotesById(note.getId());
             note.setNoteTitle(note.getNoteTitle());
             note.setNoteContent(note.getNoteContent());
+            note.setNoteModificationTime(Timestamp.valueOf(LocalDateTime.now()));
             SecurityContext securityContext = SecurityContextHolder.getContext();
             note.setUserApp(userAppRepository
                     .findUserAppByLogin(securityContext.getAuthentication().getName())
