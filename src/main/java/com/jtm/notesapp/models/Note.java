@@ -35,7 +35,6 @@ public class Note {
 //    private String noteCategory;
 
     @Column(name = "note_content", length=1024)
-    @NotBlank(message="Note content is required.")
     @Size(max = 1024)
     private String noteContent;
 
