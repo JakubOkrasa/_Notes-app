@@ -66,9 +66,33 @@ public class NoteService {
     }
 
     public Note addNote(NoteDto noteDto) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        noteDto.setUserApp(userAppRepository
+                .findUserAppByLogin(securityContext
+                        .getAuthentication()
+                        .getName())
+                .orElseThrow(() -> new UsernameNotFoundException("Current user not found")));
         Note note = noteMapper.reverseMap(noteDto);
         note.setNoteModificationTime(Timestamp.valueOf(LocalDateTime.now()));
         return noteRepository.save(note);
+    }
+
+    public void updateNote(Note note) {
+        try {
+            noteRepository.findNotesById(note.getId());
+            note.setNoteTitle(note.getNoteTitle());
+            note.setNoteContent(note.getNoteContent());
+            note.setNoteModificationTime(Timestamp.valueOf(LocalDateTime.now()));
+            SecurityContext securityContext = SecurityContextHolder.getContext();
+            note.setUserApp(userAppRepository
+                    .findUserAppByLogin(securityContext.getAuthentication().getName())
+                    .orElseThrow(() -> new UsernameNotFoundException("Error saving UserApp in updating note.")));
+            noteRepository.save(note);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void updateNoteByNoteTitle(NoteDto noteDto) {
