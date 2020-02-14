@@ -42,7 +42,7 @@ public class NoteService {
     //==============================
     public List<Note> getNotesByUserApp() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
-        return noteRepository.findNotesByUserApp(userAppRepository
+        return noteRepository.findNotesByUserAppOrderByNoteModificationTimeDesc(userAppRepository
                 .findUserAppByLogin(securityContext
                         .getAuthentication()
                         .getName())

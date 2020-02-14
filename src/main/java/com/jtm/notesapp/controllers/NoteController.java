@@ -43,10 +43,10 @@ public class NoteController {
     //
     //==============================
 
-    //@GetMapping("/dto/notes")
-    //public List<NoteDto> getNotesDto() {
-    //    return noteService.getNotesDto();
-    //}
+//    @GetMapping("/dto/notes")
+//    public List<NoteDto> getNotesDto() {
+//        return noteService.getNotesDto();
+//    }
 
 
     @PostMapping("/dto/notes")
