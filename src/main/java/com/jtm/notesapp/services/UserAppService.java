@@ -1,8 +1,8 @@
 package com.jtm.notesapp.services;
 
 import com.jtm.notesapp.commons.LoginExistsException;
-import com.jtm.notesapp.commons.security.RoleRepository;
-import com.jtm.notesapp.commons.security.UserAppRepository;
+import com.jtm.notesapp.repositories.RoleRepository;
+import com.jtm.notesapp.repositories.UserAppRepository;
 import com.jtm.notesapp.mappers.UserAppMapper;
 import com.jtm.notesapp.models.DTOs.UserAppDto;
 import com.jtm.notesapp.models.Role;

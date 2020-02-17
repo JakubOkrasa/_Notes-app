@@ -1,22 +1,15 @@
 package com.jtm.notesapp.controllers;
 
-import com.jtm.notesapp.commons.security.UserAppRepository;
 import com.jtm.notesapp.models.DTOs.NoteDto;
 import com.jtm.notesapp.models.Note;
-import com.jtm.notesapp.repositories.NoteRepository;
 import com.jtm.notesapp.services.NoteService;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 @Controller
 public class HomeController {
