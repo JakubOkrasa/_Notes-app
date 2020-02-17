@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin //"żeby nie mieć problemów z angularem w przyszłości
+@CrossOrigin
 @RequestMapping("/api/v1")
 public class NoteController {
     private NoteService noteService;
