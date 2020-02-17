@@ -67,8 +67,8 @@ public class NoteController {
     }
 
     @GetMapping("/dto/notes")
-    public List<NoteDto> getNotesDtoByNoteTitle(@RequestParam(value = "notetitle") String notetitle) {
-        return noteService.getNotesByTitle(notetitle)
+    public List<NoteDto> getNotesDtoByNoteTitle(@RequestParam(value = "noteTitle") String noteTitle) {
+        return noteService.getNotesByTitle(noteTitle)
                 .stream()
                 .map(n -> noteMapper.map(n)).collect(Collectors.toList());
     }
