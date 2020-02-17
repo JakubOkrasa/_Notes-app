@@ -43,10 +43,10 @@ public class NoteController {
     //
     //==============================
 
-//    @GetMapping("/dto/notes")
-//    public List<NoteDto> getNotesDto() {
-//        return noteService.getNotesDto();
-//    }
+    @GetMapping("/dto/notes")
+    public List<NoteDto> getNotesDto() {
+        return noteService.getNotesDto();
+    }
 
 
     @PostMapping("/dto/notes")
@@ -67,13 +67,10 @@ public class NoteController {
     }
 
     @GetMapping("/dto/notes")
-    public List<NoteDto> getNotesDtoByNoteTitle(@RequestParam(value = "notetitle", required = false) String notetitle) {
-        if (notetitle != null) {
-            return noteService.getNotesByTitle(notetitle)
-                    .stream()
-                    .map(n -> noteMapper.map(n)).collect(Collectors.toList());
-        }
-        return  noteService.getNotesDto();
+    public List<NoteDto> getNotesDtoByNoteTitle(@RequestParam(value = "notetitle") String notetitle) {
+        return noteService.getNotesByTitle(notetitle)
+                .stream()
+                .map(n -> noteMapper.map(n)).collect(Collectors.toList());
     }
 
 
