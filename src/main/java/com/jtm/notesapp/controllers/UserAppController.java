@@ -1,10 +1,10 @@
 package com.jtm.notesapp.controllers;
 
-import com.jtm.notesapp.commons.security.UserAppRepository;
+import com.jtm.notesapp.commons.LoginExistsException;
 import com.jtm.notesapp.models.DTOs.UserAppDto;
+import com.jtm.notesapp.repositories.UserAppRepository;
 import com.jtm.notesapp.models.UserApp;
 import com.jtm.notesapp.services.UserAppService;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,18 +14,16 @@ import java.util.List;
 @CrossOrigin
 public class UserAppController {
 
-    UserAppService userAppService;
-    UserAppRepository userAppRepository;
+    private UserAppService userAppService;
 
-    public UserAppController(UserAppService userAppService, UserAppRepository userAppRepository) {
+    public UserAppController(UserAppService userAppService) {
         this.userAppService = userAppService;
-        this.userAppRepository = userAppRepository;
     }
 
-//    @PostMapping("/users")
-//    UserApp addUser(@RequestBody UserApp userApp) {
-//        return userAppService.addUser(userApp);
-//    }
+    @PostMapping("/users")
+    UserApp addUser(@RequestBody UserAppDto userApp) throws LoginExistsException {
+        return userAppService.addUser(userApp);
+    }
 
     @GetMapping("/users")
     List<UserApp> getUsers() {

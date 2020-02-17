@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin //"żeby nie mieć problemów z angularem w przyszłości
+@CrossOrigin
 @RequestMapping("/api/v1")
 public class NoteController {
     private NoteService noteService;
@@ -22,11 +22,7 @@ public class NoteController {
     }
 
     //==============================
-    //
-    //
     //          DAO
-    //
-    //
     //==============================
 
     @GetMapping("/notes")
@@ -36,18 +32,8 @@ public class NoteController {
 
 
     //==============================
-    //
-    //
     //          DTO
-    //
-    //
     //==============================
-
-//    @GetMapping("/dto/notes")
-//    public List<NoteDto> getNotesDto() {
-//        return noteService.getNotesDto();
-//    }
-
 
     @PostMapping("/dto/notes")
     Note addNote(@RequestBody NoteDto noteDto) {

@@ -1,5 +1,6 @@
 package com.jtm.notesapp.commons.security;
 
+import com.jtm.notesapp.repositories.UserAppRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -16,11 +16,6 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
 
     Optional<Note> findNotesByNoteTitle(String noteTitle);
 
-
-
-    //my version
-    //List<Note> findNotesByNoteTitleContainingIgnoreCase(String noteTitle);
-
     @Transactional
     @Modifying
     void deleteById(Long id);
