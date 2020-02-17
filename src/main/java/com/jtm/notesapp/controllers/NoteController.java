@@ -22,11 +22,7 @@ public class NoteController {
     }
 
     //==============================
-    //
-    //
     //          DAO
-    //
-    //
     //==============================
 
     @GetMapping("/notes")
@@ -36,11 +32,7 @@ public class NoteController {
 
 
     //==============================
-    //
-    //
     //          DTO
-    //
-    //
     //==============================
 
     @GetMapping("/dto/notes")

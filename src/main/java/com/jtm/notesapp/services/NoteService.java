@@ -94,7 +94,6 @@ public class NoteService {
     public void updateNoteByNoteTitle(NoteDto noteDto) {
         noteRepository.findNotesByNoteTitle(noteDto.getNoteTitle())
                 .ifPresent(n -> {
-//                    n.setNoteCategory(noteDto.getNoteCategory());
                     n.setNoteContent(noteDto.getNoteContent());
                     n.setNoteTitle(noteDto.getNoteTitle());
                     noteRepository.save(n);
