@@ -2,18 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: head"></head>
 <body>
-    <div class="container">
-        <h2>Create new account.</h2>
+    <div class="form-container">
+        <h3 class="text-center">New account</h3>
         <br/>
-        <form th:action="@{/register}" th:object="${user}" method="post" action="/register">
-            <p><input type="text" name="login" placeholder="Login"/></p>
-            <p th:each="error : ${#fields.errors('login')}"
-               th:text="${error}">Validation error</p>
-            <p><input type="password" name="password" placeholder="Password"/></p>
-            <p th:each="error : ${#fields.errors('password')}"
-               th:text="${error}">Validation error</p>
-            <button class="btn btn-sm btn-success" type="submit">Register</button>
+        <form th:action="@{/register}" th:object="${user}" method="post" action="/register" autocomplete="off"
+              oninput='confirmPasswd.setCustomValidity(password.value != confirmPasswd.value ? "Passwords do not match." : "")'>
+            <label>Login</label>
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <input class="form-control" type="text" name="login" placeholder="type login" required autocomplete="off"/>
+            </div>
+            <label><br>Password</label>
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                <input class="form-control" type="password" name="password" placeholder="enter password" required/>
+            </div>
+            <label><br>Confirm password</label>
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                <input class="form-control" type="password" placeholder="enter password again" name="confirmPasswd" required/>
+            </div>
+            <button class="btn btn-sm btn-success m-2" type="submit">Register</button>
         </form>
+        Already have an account? <a href="login">Sign in</a>
     </div>
 </body>
 </html>

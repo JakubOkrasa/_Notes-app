@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .failureHandler((req, res, exp) -> {//exp - exception
                     System.out.println("==================FAILURE HANDLER ====================");
-                    res.sendRedirect("/login");
+                    res.sendRedirect("/login"); //todo ?error=true OR req.getSession().setAttribute("message", "You are logged out.");
                 })
                 .permitAll()
                 .and()

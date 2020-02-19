@@ -1,16 +1,17 @@
 body {
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100%;
     background-image: url('https://images.pexels.com/photos/544115/pexels-photo-544115.jpeg');
     box-sizing: border-box;
 }
 
-a:link {
+#topbar a:link {
     color: whitesmoke;
     text-decoration: none;
 }
 
-a:visited {
+#topbar a:visited {
     color: whitesmoke;
     text-decoration: none;
 }
@@ -23,6 +24,19 @@ a:hover {
 #main-container {
 /*    opacity: 0.8; it causes that bootstrap modal doesn't close itself */
 }
+
+/*styles registration form*/
+.form-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    width: 400px;
+    background-color: white;
+    opacity: 0.8;
+    padding: 15px;
+    border-radius: 15px;
+}
+
 
 #content-wrapper {
     display: flex;

@@ -36,6 +36,7 @@ public class RegistrationController {
     public ModelAndView registerUser(@ModelAttribute("user") @Valid UserAppDto userAppDto,
                                      BindingResult result, WebRequest request, Errors errors) {
         UserApp registered = new UserApp();
+
         if(!result.hasErrors()) {
             registered= createUser(userAppDto, result);
         }
