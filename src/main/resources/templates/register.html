@@ -5,7 +5,8 @@
     <div class="form-container">
         <h3 class="text-center">New account</h3>
         <br/>
-        <form th:action="@{/register}" th:object="${user}" method="post" action="/register" autocomplete="off">
+        <form th:action="@{/register}" th:object="${user}" method="post" action="/register" autocomplete="off"
+              oninput='confirmPasswd.setCustomValidity(password.value != confirmPasswd.value ? "Passwords do not match." : "")'>
             <label>Login</label>
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -19,7 +20,7 @@
             <label><br>Confirm password</label>
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                <input class="form-control" type="password" placeholder="enter password again" required/>
+                <input class="form-control" type="password" placeholder="enter password again" name="confirmPasswd" required/>
             </div>
             <button class="btn btn-sm btn-success m-2" type="submit">Register</button>
         </form>
