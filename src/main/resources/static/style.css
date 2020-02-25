@@ -79,6 +79,10 @@ a:hover {
     flex-direction: row;
 }
 
+.note-on-list h4 {
+    margin: 5px;
+}
+
 .button-view {
     width: 65px;
     margin-left: auto;
