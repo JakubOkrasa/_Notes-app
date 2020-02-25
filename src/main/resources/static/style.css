@@ -54,9 +54,9 @@ a:hover {
 #add-note-button {
     width: 450px;
     height: 50px;
-    /*background-color: white;*/
     margin-bottom: 15px;
-    margin-left: 150px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 15px;
     padding: 10px;
     text-align: center;
@@ -67,9 +67,10 @@ a:hover {
     height: 50px;
     background-color: cornflowerblue;
     margin-bottom: 15px;
-    margin-left: 150px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 15px;
-    padding: 10px;
+    padding: 5px;
     display: block;
 }
 
@@ -78,21 +79,31 @@ a:hover {
     flex-direction: row;
 }
 
+.note-on-list h4 {
+    margin: 5px;
+}
+
 .button-view {
+    width: 65px;
     margin-left: auto;
     margin-right: 2px;
+    margin-bottom: 12px;
 }
 
 .button-delete {
     margin-left: 2px;
     margin-right: 2px;
+    margin-bottom: 8px;
 }
 
-.button-view button {
-    font-size: 17px;
+#button-edit {
+    margin-bottom: 10px;
+    margin-right: 20px;
+    margin-left: auto;
+
 }
 
-.button-delete button {
+.button-delete button, .button-view button {
     font-size: 17px;
 }
 
@@ -167,6 +178,7 @@ input {
     border-color: #6699ff;
     border-width: 3px;
     font-size: 25px;
+    color: whitesmoke;
 }
 
 #user-info {
