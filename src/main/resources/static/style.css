@@ -54,7 +54,6 @@ a:hover {
 #add-note-button {
     width: 450px;
     height: 50px;
-    /*background-color: white;*/
     margin-bottom: 15px;
     margin-left: 150px;
     border-radius: 15px;
@@ -69,7 +68,7 @@ a:hover {
     margin-bottom: 15px;
     margin-left: 150px;
     border-radius: 15px;
-    padding: 10px;
+    padding: 5px;
     display: block;
 }
 
@@ -79,20 +78,26 @@ a:hover {
 }
 
 .button-view {
+    width: 65px;
     margin-left: auto;
     margin-right: 2px;
+    margin-bottom: 12px;
 }
 
 .button-delete {
     margin-left: 2px;
     margin-right: 2px;
+    margin-bottom: 8px;
 }
 
-.button-view button {
-    font-size: 17px;
+#button-edit {
+    margin-bottom: 10px;
+    margin-right: 20px;
+    margin-left: auto;
+
 }
 
-.button-delete button {
+.button-delete button, .button-view button {
     font-size: 17px;
 }
 
