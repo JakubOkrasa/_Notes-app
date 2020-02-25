@@ -55,7 +55,8 @@ a:hover {
     width: 450px;
     height: 50px;
     margin-bottom: 15px;
-    margin-left: 150px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 15px;
     padding: 10px;
     text-align: center;
@@ -66,7 +67,8 @@ a:hover {
     height: 50px;
     background-color: cornflowerblue;
     margin-bottom: 15px;
-    margin-left: 150px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 15px;
     padding: 5px;
     display: block;
