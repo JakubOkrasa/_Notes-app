@@ -49,7 +49,7 @@ function editNote() {
     noteContentTextarea.cols= 50;
     document.getElementById("mod-content").innerHTML="";
     document.getElementById("mod-content").insertAdjacentElement('afterbegin', noteContentTextarea);
-    document.getElementById("mod-btn").innerHTML = "<button class=\"btn btn-info\" onclick=\"updateNote()\" type=\"button\">Save</button>";
+    document.getElementById("button-edit").innerHTML = "<button class=\"btn btn-info\" onclick=\"updateNote()\" type=\"button\">Save</button>";
 }
 
 function updateNote() {
@@ -70,5 +70,5 @@ function updateNote() {
 function makeViewNoteLook() {
     document.getElementById("mod-title").innerHTML = note.noteTitle;
     document.getElementById("mod-content").innerHTML = note.noteContent;
-    document.getElementById("mod-btn").innerHTML = "<button class=\"btn btn-info\" onclick=\"editNote()\" type=\"button\">Edit</button>";
+    document.getElementById("button-edit").innerHTML = "<button class=\"btn btn-info\" onclick=\"editNote()\" type=\"button\">Edit</button>";
 }
