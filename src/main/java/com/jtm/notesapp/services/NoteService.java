@@ -5,6 +5,7 @@ import com.jtm.notesapp.mappers.NoteMapper;
 import com.jtm.notesapp.models.DTOs.NoteDto;
 import com.jtm.notesapp.models.Note;
 import com.jtm.notesapp.repositories.NoteRepository;
+import org.omg.CORBA.Environment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PostFilter;
@@ -62,6 +63,8 @@ public class NoteService {
     }
 
     public Note addNote(NoteDto noteDto) {
+        noteDto.setNoteContent(noteDto.getNoteContent().replace(System.lineSeparator(), "</br>"));
+        System.out.println("CONTENT: " + noteDto.getNoteContent());
         SecurityContext securityContext = SecurityContextHolder.getContext();
         noteDto.setUserApp(userAppRepository
                 .findUserAppByLogin(securityContext

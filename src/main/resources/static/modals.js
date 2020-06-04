@@ -43,6 +43,8 @@ function editNote() {
     console.log("editNote JS function call");
     document.getElementById("mod-title").innerHTML = "<input type='text' class='form-control' value='" + note.noteTitle + "'>";
     let noteContentTextarea = document.createElement("TEXTAREA");
+    // note.noteContent = note.noteContent.replace(/<\/br>\//g, "\n");
+    note.noteContent = note.noteContent.split("</br>").join("\n");
     noteContentTextarea.value = note.noteContent;
     noteContentTextarea.className = "form-control";
     noteContentTextarea.rows= 6;
@@ -55,6 +57,7 @@ function editNote() {
 function updateNote() {
     note.noteTitle = document.getElementById("mod-title").getElementsByTagName("input")[0].value;
     note.noteContent = document.getElementById("mod-content").getElementsByTagName("textarea")[0].value;
+    note.noteContent=note.noteContent.split("\n").join("</br>");
     const request = fetch('view-modal', {
         method: 'POST',
         body: JSON.stringify(note),
