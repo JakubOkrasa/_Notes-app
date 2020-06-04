@@ -209,3 +209,13 @@ input {
     margin-right: 15px;
     display: block;
 }
+
+.message-container {
+    margin-left: 10%;
+    margin-right: auto;
+    margin-top: 10%;
+    width: 400px;
+    opacity: 0.8;
+    padding: 15px;
+    border-radius: 15px;
+}
