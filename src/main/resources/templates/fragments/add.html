@@ -12,7 +12,8 @@
                         </div>
                         <div class="modal-body">
                             <form th:action="@{/add}" th:object="${note}" method="post" action="/add">
-                                <input class="form-control" type="text" name="noteTitle" maxlength="20" placeholder="Note Title" required/>
+                                <input id="note-title" class="form-control" type="text" name="noteTitle" maxlength="20" placeholder="Note Title" required/>
+                                <span class="error" id="note-title-err" aria-live="polite"></span>
                                 <textarea class="form-control" type="text" rows="10" cols="40" maxlength="650" name="noteContent" placeholder="Enter your note"></textarea>
                                 <div class="modal-footer">
                                     <button class="btn btn-success" type="submit">Create</button>
