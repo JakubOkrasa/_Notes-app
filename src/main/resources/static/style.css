@@ -216,6 +216,7 @@ input {
     margin-top: 10%;
     width: 400px;
     opacity: 0.8;
-    padding: 15px;
+    padding: 25px;
     border-radius: 15px;
+    background-color: aliceblue;
 }

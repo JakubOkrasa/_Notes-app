@@ -22,7 +22,7 @@ function viewNote(id) {
     note.noteId = id;
     const response = fetch('view-modal?id=' + id, {
         method: 'GET',
-        cache: 'no-cache',
+        cache: 'no-cache'
     });
     response
         .then((r) => r.json())
@@ -63,7 +63,7 @@ function updateNote() {
         body: JSON.stringify(note),
         cache: 'no-cache',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json; charset=utf-8'
         }
     });
     makeViewNoteLook()
