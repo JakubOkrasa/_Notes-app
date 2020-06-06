@@ -4,10 +4,10 @@
 <body>
         <div class="container viewer" style="width: 250px">
             <form action="#" th:action="@{/update}" th:object="${noteToEdit}" method="post">
-                <input type="text" th:field="*{noteTitle}"/>
+                <input type="text" th:field="*{noteTitle}" name="noteTitle"/>
                 <!--                <label>Category</label>-->
                 <!--                <input type="text" th:field="*{noteCategory}"/>-->
-                <textarea type="text" th:field="*{noteContent}" maxlength="650"></textarea>
+                <textarea type="text" th:field="*{noteContent}" maxlength="650" name="noteContent"></textarea>
 
                 <input type="hidden" th:value="${noteToEdit.getId()}" name="updateNoteId" />
                 <button class="btn btn-info" type="submit">Save</button>
