@@ -7,7 +7,7 @@
                 <input type="text" th:field="*{noteTitle}"/>
                 <!--                <label>Category</label>-->
                 <!--                <input type="text" th:field="*{noteCategory}"/>-->
-                <textarea type="text" th:field="*{noteContent}"></textarea>
+                <textarea type="text" th:field="*{noteContent}" maxlength="650"></textarea>
 
                 <input type="hidden" th:value="${noteToEdit.getId()}" name="updateNoteId" />
                 <button class="btn btn-info" type="submit">Save</button>

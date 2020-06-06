@@ -29,8 +29,7 @@ public class Note {
     @Size(min=1)
     private String noteTitle;
 
-    @Column(name = "note_content", length=1024)
-    @Size(max = 1024)
+    @Column(name = "note_content")
     private String noteContent;
 
     @Column
